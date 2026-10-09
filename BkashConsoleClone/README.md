@@ -107,6 +107,9 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 <a id="section-2"></a>
 
 # 2. Complete Feature List
+<!-- FEATURE-FILES:GUIDE:START -->
+> **File list পড়ার নিয়ম:** Application path `src/BkashConsoleClone/` থেকে, Test path `tests/BkashConsoleClone.Tests/` থেকে ধরবে। `docs/`, `tests/`, `playground/` বা solution path দেওয়া থাকলে repository root থেকে ধরবে। একই file একবার তৈরি, পরে reuse/update। Feature-ID নয়, Roadmap-এর Phase অনুযায়ী কাজ করবে। পরের Phase-এর UI/Admin/Audit dependency এখনই তৈরি করবে না। Program.cs-এ wiring প্রয়োজন হলে update করবে। মূল Rules, Acceptance, Topic, UI ও Roadmap অপরিবর্তিত।
+<!-- FEATURE-FILES:GUIDE:END -->
 
 ## User Management
 
@@ -119,6 +122,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** নাম/mobile/PIN/confirmation দিয়ে user+wallet।
 - **Rules:** BR-01–04,15 (Section 13)।
 - **Responsible:** UserService/InputValidator/hasher/store।
+<!-- FEATURE-FILES:F-01:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/User.cs`, `Models/PinCredential.cs`, `Models/Account.cs`, `Enums/UserRole.cs`, `Services/UserService.cs`, `Services/IPinHasher.cs`, `Services/Pbkdf2PinHasher.cs`, `Utilities/InputValidator.cs`, `Repositories/IUserRepository.cs`, `Repositories/InMemoryUserRepository.cs`, `Repositories/IAccountRepository.cs`, `Repositories/InMemoryAccountRepository.cs`, `Data/IStateStore.cs`, `Data/InMemoryStateStore.cs`, `Data/AppState.cs`, `UI/MainMenu.cs`, `UI/InputReader.cs`।
+  - **Test file:** `Services/UserServiceTests.cs`, `Utilities/InputValidatorTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-01:END -->
 - **Topics:** [f-variables](#f-variables) · [f-collections](#f-collections) · [o-constructor](#o-constructor)।
 - **Acceptance:** valid→one user+wallet balance 0; duplicate/invalid→neither inserted।
 
@@ -127,6 +136,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** credential যাচাই ও session শুরু/শেষ।
 - **Rules:** BR-05–06,21 (Section 13)।
 - **Responsible:** AuthService/SessionManager।
+<!-- FEATURE-FILES:F-02:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/AuthService.cs`, `Services/SessionManager.cs`, `Models/UserSession.cs`, `Models/User.cs`, `Services/IPinHasher.cs`, `Services/Pbkdf2PinHasher.cs`, `Utilities/IClock.cs`, `Utilities/SystemClock.cs`, `UI/MainMenu.cs`।
+  - **Test file:** `Services/AuthServiceTests.cs`, `Fakes/FakeClock.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-02:END -->
 - **Topics:** [f-methods](#f-methods) · [f-loops](#f-loops) · [f-nullable](#f-nullable)।
 - **Acceptance:** correct→session; wrong→generic message; threshold→lock; logout→protected calls denied।
 
@@ -135,6 +150,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** নিজের safe তথ্য দেখা।
 - **Rules:** BR-18,20 (Section 13)।
 - **Responsible:** UserService/UserDetailsDto।
+<!-- FEATURE-FILES:F-03:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/Dtos/UserDetailsDto.cs`, `Utilities/StringExtensions.cs`, `Services/UserService.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/UserServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-03:END -->
 - **Topics:** [o-fields-properties](#o-fields-properties) · [r-extension-methods](#r-extension-methods)।
 - **Acceptance:** own only; masked mobile; no PIN/hash/salt।
 
@@ -143,6 +164,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** Active/Suspended/Closed দেখা।
 - **Rules:** BR-06 (Section 13)।
 - **Responsible:** Account/AccountService।
+<!-- FEATURE-FILES:F-04:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Enums/AccountStatus.cs`, `Models/Account.cs`, `Services/AccountService.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Models/AccountTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-04:END -->
 - **Topics:** [f-record-struct-enum](#f-record-struct-enum) · [r-pattern-matching](#r-pattern-matching)।
 - **Acceptance:** new Active; inactive money actions blocked।
 
@@ -151,6 +178,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** unique simulated mobile wallet number।
 - **Rules:** BR-01,04 (Section 13)।
 - **Responsible:** InputValidator/account repo।
+<!-- FEATURE-FILES:F-05:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Utilities/InputValidator.cs`, `Models/User.cs`, `Models/Account.cs`, `Repositories/InMemoryUserRepository.cs`, `Repositories/InMemoryAccountRepository.cs`, `Services/UserService.cs`।
+  - **Test file:** `Utilities/InputValidatorTests.cs`, `Services/UserServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-05:END -->
 - **Topics:** [f-string](#f-string) · [f-collections](#f-collections) · [o-immutability](#o-immutability)।
 - **Acceptance:** Personal number: 11 ASCII digits 01[3-9]; unique/immutable; Agent/System seeded opaque IDs; no ownership verification claim।
 
@@ -159,6 +192,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** old/new/confirmation।
 - **Rules:** BR-02,05,25 (Section 13)।
 - **Responsible:** UserService/AuthService/hasher।
+<!-- FEATURE-FILES:F-06:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/UserService.cs`, `Services/AuthService.cs`, `Services/SessionManager.cs`, `Services/Pbkdf2PinHasher.cs`, `Models/PinCredential.cs`, `Models/User.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/UserServiceTests.cs`, `Services/AuthServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-06:END -->
 - **Topics:** [f-methods](#f-methods) · [o-encapsulation](#o-encapsulation)।
 - **Acceptance:** old wrong/mismatch/same PIN reject; fresh salt/hash; session invalidate।
 
@@ -167,6 +206,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** identity/idle timeout।
 - **Rules:** BR-21 (Section 13)।
 - **Responsible:** SessionManager/IClock।
+<!-- FEATURE-FILES:F-07:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/SessionManager.cs`, `Models/UserSession.cs`, `Services/AuthService.cs`, `Utilities/IClock.cs`, `Configuration/AppConfiguration.cs`, `UI/UserMenu.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Services/AuthServiceTests.cs`, `Fakes/FakeClock.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-07:END -->
 - **Topics:** [f-nullable](#f-nullable) · [o-interface](#o-interface)।
 - **Acceptance:** protected service checks expiry; fake-clock boundary; no credentials।
 
@@ -181,6 +226,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** registration-এর সঙ্গে personal wallet।
 - **Rules:** BR-04,15 (Section 13)।
 - **Responsible:** UserService/Account/store।
+<!-- FEATURE-FILES:F-08:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/Account.cs`, `Services/UserService.cs`, `Repositories/IAccountRepository.cs`, `Repositories/InMemoryAccountRepository.cs`, `Data/IStateStore.cs`, `Data/InMemoryStateStore.cs`, `Data/AppState.cs`।
+  - **Test file:** `Models/AccountTests.cs`, `Services/UserServiceTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-08:END -->
 - **Topics:** [o-constructor](#o-constructor) · [o-this](#o-this)।
 - **Acceptance:** one wallet per User role; zero balance; user+wallet same commit।
 
@@ -189,6 +240,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** PIN-confirmed own balance।
 - **Rules:** BR-05,08,13 (Section 13)।
 - **Responsible:** AccountService/AuthService।
+<!-- FEATURE-FILES:F-09:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/AccountService.cs`, `Services/AuthService.cs`, `Utilities/MoneyExtensions.cs`, `Repositories/IAccountRepository.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Models/AccountTests.cs`, `Services/AuthServiceTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-09:END -->
 - **Topics:** [f-variables](#f-variables) · [r-extension-methods](#r-extension-methods)।
 - **Acceptance:** owner+PIN; two decimal display; no mutation।
 
@@ -197,6 +254,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** type/status/date/daily usage।
 - **Rules:** BR-11,18 (Section 13)।
 - **Responsible:** AccountService/transaction repo।
+<!-- FEATURE-FILES:F-10:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/AccountService.cs`, `Repositories/ITransactionRepository.cs`, `Models/Transaction.cs`, `Configuration/TransactionLimits.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-10:END -->
 - **Topics:** [f-linq](#f-linq) · [o-composition](#o-composition)।
 - **Acceptance:** completed relevant principal amounts only; configured business day।
 
@@ -205,6 +268,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** inactive participants আটকানো।
 - **Rules:** BR-06 (Section 13)।
 - **Responsible:** TransactionValidator।
+<!-- FEATURE-FILES:F-11:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/TransactionValidator.cs`, `Models/Account.cs`, `Enums/AccountStatus.cs`, `Services/TransactionService.cs`।
+  - **Test file:** `Models/AccountTests.cs`, `Services/TransactionServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-11:END -->
 - **Topics:** [f-conditions](#f-conditions) · [r-pattern-matching](#r-pattern-matching)।
 - **Acceptance:** inactive sender/receiver/agent→Failed; no postings।
 
@@ -213,6 +282,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** negative/invalid balance আটকানো।
 - **Rules:** BR-07–08,15 (Section 13)।
 - **Responsible:** Account/TransactionService।
+<!-- FEATURE-FILES:F-12:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/Account.cs`, `Services/TransactionService.cs`, `Data/InMemoryStateStore.cs`।
+  - **Test file:** `Models/AccountTests.cs`, `Data/StateStoreTests.cs`, `Services/TransactionServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-12:END -->
 - **Topics:** [o-encapsulation](#o-encapsulation) · [o-immutability](#o-immutability)।
 - **Acceptance:** no public setter; positive movements; overflow no publication।
 
@@ -227,6 +302,13 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** seeded agent→নিজের wallet।
 - **Rules:** BR-06–13,15,22 (Section 13)।
 - **Responsible:** TransactionService/FeeCalculator।
+<!-- FEATURE-FILES:F-13:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/TransactionService.cs`, `Services/TransactionValidator.cs`, `Services/FeeCalculator.cs`, `Models/Transaction.cs`, `Models/BalancePosting.cs`, `Models/TransactionRequest.cs`, `Models/TransactionQuote.cs`, `Enums/TransactionType.cs`, `Enums/TransactionStatus.cs`, `Configuration/FeePolicy.cs`, `Configuration/TransactionLimits.cs`, `Data/SeedData.cs`, `Data/InMemoryStateStore.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+  - **Optional refactor:** `Services/Handlers/ITransactionPolicy.cs`, `Services/Handlers/CashInPolicy.cs`; simple switch যথেষ্ট হলে এগুলো বাধ্যতামূলক নয়।
+<!-- FEATURE-FILES:F-13:END -->
 - **Topics:** [f-methods](#f-methods) · [f-operators](#f-operators)।
 - **Acceptance:** agent -amount, personal +amount; zero fee; agent balance check; role-play acknowledgement।
 
@@ -235,6 +317,13 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** personal→agent।
 - **Rules:** BR-06–13,15,22 (Section 13)।
 - **Responsible:** TransactionService/FeeCalculator।
+<!-- FEATURE-FILES:F-14:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/TransactionService.cs`, `Services/TransactionValidator.cs`, `Services/FeeCalculator.cs`, `Configuration/FeePolicy.cs`, `Models/BalancePosting.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Utilities/FeeCalculatorTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+  - **Optional refactor:** `Services/Handlers/ITransactionPolicy.cs`, `Services/Handlers/CashOutPolicy.cs`; simple switch যথেষ্ট হলে এগুলো বাধ্যতামূলক নয়।
+<!-- FEATURE-FILES:F-14:END -->
 - **Topics:** [f-operators](#f-operators) · [f-exception-handling](#f-exception-handling)।
 - **Acceptance:** personal -(amount+fee), agent +amount, fee wallet +fee; insufficient→unchanged।
 
@@ -243,6 +332,13 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** অন্য personal wallet-এ amount/reference/PIN।
 - **Rules:** BR-06–15 (Section 13)।
 - **Responsible:** TransactionService/validator।
+<!-- FEATURE-FILES:F-15:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/TransactionService.cs`, `Services/TransactionValidator.cs`, `Models/TransactionRequest.cs`, `Models/TransactionQuote.cs`, `Models/BalancePosting.cs`, `Data/InMemoryStateStore.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+  - **Optional refactor:** `Services/Handlers/ITransactionPolicy.cs`, `Services/Handlers/SendMoneyPolicy.cs`; simple switch যথেষ্ট হলে এগুলো বাধ্যতামূলক নয়।
+<!-- FEATURE-FILES:F-15:END -->
 - **Topics:** [f-collections](#f-collections) · [o-copy](#o-copy)।
 - **Acceptance:** self-send reject; sender -(amount+fee), receiver +amount, fee wallet +fee; no partial update।
 
@@ -251,6 +347,13 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** fake operator/amount top-up।
 - **Rules:** BR-07–13,23 (Section 13)।
 - **Responsible:** TransactionService/FakeRechargeGateway।
+<!-- FEATURE-FILES:F-16:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/IRechargeGateway.cs`, `Services/FakeRechargeGateway.cs`, `Utilities/OperatorResolver.cs`, `Services/TransactionService.cs`, `Services/TransactionValidator.cs`, `Configuration/TransactionLimits.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Fakes/FakeRechargeGateway.cs`, `Services/TransactionServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+  - **Optional refactor:** `Services/Handlers/ITransactionPolicy.cs`, `Services/Handlers/RechargePolicy.cs`; simple switch যথেষ্ট হলে এগুলো বাধ্যতামূলক নয়।
+<!-- FEATURE-FILES:F-16:END -->
 - **Topics:** [f-async](#f-async) · [f-task-thread](#f-task-thread) · [r-cancellation-token](#r-cancellation-token)।
 - **Acceptance:** 20–1000 inclusive; fake prefix; settlement credit; failure/cancel before commit no debit।
 
@@ -259,6 +362,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** নিজের submitted attempts।
 - **Rules:** BR-18 (Section 13)।
 - **Responsible:** TransactionService/transaction repo।
+<!-- FEATURE-FILES:F-17:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Repositories/ITransactionRepository.cs`, `Repositories/InMemoryTransactionRepository.cs`, `Data/AppState.cs`, `Services/TransactionService.cs`, `Models/Transaction.cs`, `UI/UserMenu.cs`, `UI/ConsoleUi.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-17:END -->
 - **Topics:** [f-loops](#f-loops) · [f-linq](#f-linq) · [r-yield](#r-yield)।
 - **Acceptance:** own participant/initiator only; newest+ID tie-break; empty safe।
 
@@ -267,6 +376,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** ID দিয়ে own record।
 - **Rules:** BR-18,20 (Section 13)।
 - **Responsible:** TransactionService।
+<!-- FEATURE-FILES:F-18:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/TransactionService.cs`, `Repositories/ITransactionRepository.cs`, `Repositories/InMemoryTransactionRepository.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-18:END -->
 - **Topics:** [f-collections](#f-collections) · [f-nullable](#f-nullable)।
 - **Acceptance:** unknown/other-user ID same not-found; no leakage।
 
@@ -275,6 +390,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** completed immutable snapshot।
 - **Rules:** BR-17 (Section 13)।
 - **Responsible:** TransactionReceipt/ReceiptPrinter।
+<!-- FEATURE-FILES:F-19:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/TransactionReceipt.cs`, `UI/ReceiptPrinter.cs`, `Models/Transaction.cs`, `Models/BalancePosting.cs`, `Services/TransactionService.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-19:END -->
 - **Topics:** [f-string](#f-string) · [f-record-struct-enum](#f-record-struct-enum)।
 - **Acceptance:** Completed only; ID/amount/fee match; historical balance-after, no other wallet balance।
 
@@ -283,6 +404,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** attempt terminal result।
 - **Rules:** BR-15,18 (Section 13)।
 - **Responsible:** Transaction/TransactionService।
+<!-- FEATURE-FILES:F-20:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Enums/TransactionStatus.cs`, `Models/Transaction.cs`, `Services/TransactionService.cs`, `Repositories/InMemoryTransactionRepository.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-20:END -->
 - **Topics:** [f-record-struct-enum](#f-record-struct-enum) · [o-encapsulation](#o-encapsulation)।
 - **Acceptance:** Pending internal; stored Completed/Failed immutable; Failed safe code।
 
@@ -291,6 +418,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** opaque unique ID।
 - **Rules:** BR-16 (Section 13)।
 - **Responsible:** IIdGenerator/transaction repo।
+<!-- FEATURE-FILES:F-21:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Utilities/IIdGenerator.cs`, `Utilities/GuidIdGenerator.cs`, `Services/TransactionService.cs`, `Data/InMemoryStateStore.cs`, `Repositories/InMemoryTransactionRepository.cs`।
+  - **Test file:** `Fakes/FakeIdGenerator.cs`, `Services/TransactionServiceTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-21:END -->
 - **Topics:** [o-interface](#o-interface) · [o-static-members](#o-static-members)।
 - **Acceptance:** Guid candidate+insertion guard; 10k smoke test not uniqueness proof; fake collision no overwrite।
 
@@ -299,6 +432,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** type/status/date/amount/paging।
 - **Rules:** BR-18 (Section 13)।
 - **Responsible:** TransactionQuery/service।
+<!-- FEATURE-FILES:F-22:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/DateRange.cs`, `Models/TransactionQuery.cs`, `Services/TransactionService.cs`, `Repositories/InMemoryTransactionRepository.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-22:END -->
 - **Topics:** [f-lambda](#f-lambda) · [f-linq](#f-linq) · [r-deferred-execution](#r-deferred-execution)।
 - **Acceptance:** combined filters; inclusive amounts; exclusive date end; stable paging।
 
@@ -307,6 +446,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** rules before processing।
 - **Rules:** BR-06–13,22–23 (Section 13)।
 - **Responsible:** TransactionValidator।
+<!-- FEATURE-FILES:F-23:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/TransactionValidator.cs`, `Services/TransactionService.cs`, `Configuration/TransactionLimits.cs`, `Models/Account.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Models/AccountTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-23:END -->
 - **Topics:** [f-conditions](#f-conditions) · [r-pattern-matching](#r-pattern-matching)।
 - **Acceptance:** every rule pass/fail/boundary; validation no mutation।
 
@@ -315,6 +460,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** half update/false success আটকানো।
 - **Rules:** BR-15,18 (Section 13)।
 - **Responsible:** TransactionService/store।
+<!-- FEATURE-FILES:F-24:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Exceptions/StateCommitException.cs`, `Services/TransactionService.cs`, `Data/IStateStore.cs`, `Data/InMemoryStateStore.cs`, `Models/OperationResult.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Fakes/FaultInjectingStateStore.cs`, `Services/TransactionServiceTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-24:END -->
 - **Topics:** [f-exception-handling](#f-exception-handling) · [o-copy](#o-copy)।
 - **Acceptance:** fault before publication old state intact; post-commit notification failure remains Completed।
 
@@ -323,6 +474,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** same retry once।
 - **Rules:** BR-14 (Section 13)।
 - **Responsible:** TransactionService/retry index।
+<!-- FEATURE-FILES:F-25:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/IdempotencyEntry.cs`, `Models/TransactionRequest.cs`, `Models/Transaction.cs`, `Services/TransactionService.cs`, `Data/AppState.cs`, `Data/InMemoryStateStore.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-25:END -->
 - **Topics:** [f-collections](#f-collections) · [r-equality-hashing](#r-equality-hashing)।
 - **Acceptance:** actor+key+same payload original result; changed payload conflict; one balance effect।
 
@@ -331,6 +488,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** quote+confirm/configured limits।
 - **Rules:** BR-11–12 (Section 13)।
 - **Responsible:** FeeCalculator/FeePolicy/TransactionLimits।
+<!-- FEATURE-FILES:F-26:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/FeeCalculator.cs`, `Configuration/FeePolicy.cs`, `Configuration/TransactionLimits.cs`, `Configuration/AppConfiguration.cs`, `Services/TransactionValidator.cs`, `Models/TransactionQuote.cs`, `Services/TransactionService.cs`, `UI/UserMenu.cs`।
+  - **Test file:** `Utilities/FeeCalculatorTests.cs`, `Services/TransactionServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-26:END -->
 - **Topics:** [f-operators](#f-operators) · [f-record-struct-enum](#f-record-struct-enum)।
 - **Acceptance:** boundaries; fee 2 decimals; invalid config startup reject; completed principal daily usage।
 
@@ -339,6 +502,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** consistent signed postings।
 - **Rules:** BR-08,15,22 (Section 13)।
 - **Responsible:** Account/TransactionService/store।
+<!-- FEATURE-FILES:F-27:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/Account.cs`, `Models/BalancePosting.cs`, `Models/Transaction.cs`, `Services/TransactionService.cs`, `Data/InMemoryStateStore.cs`।
+  - **Test file:** `Models/AccountTests.cs`, `Services/TransactionServiceTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-27:END -->
 - **Topics:** [o-copy](#o-copy) · [o-immutability](#o-immutability)।
 - **Acceptance:** signed sum zero; all wallet total conserved including fee/agent/settlement।
 
@@ -353,6 +522,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** admin authenticate/authorize।
 - **Rules:** BR-05,19,24 (Section 13)।
 - **Responsible:** AuthService/SeedData।
+<!-- FEATURE-FILES:F-28:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `UI/AdminMenu.cs`, `Services/AuthService.cs`, `Enums/UserRole.cs`, `Data/SeedData.cs`, `Services/SessionManager.cs`, `UI/MainMenu.cs`।
+  - **Test file:** `Services/AuthServiceTests.cs`, `Services/AdminServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-28:END -->
 - **Topics:** [f-record-struct-enum](#f-record-struct-enum) · [o-interface](#o-interface)।
 - **Acceptance:** registration cannot choose Admin; secret not source; service guard।
 
@@ -361,6 +536,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** admin paged safe list।
 - **Rules:** BR-19–20 (Section 13)।
 - **Responsible:** AdminService।
+<!-- FEATURE-FILES:F-29:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/AdminService.cs`, `Repositories/IUserRepository.cs`, `Repositories/InMemoryUserRepository.cs`, `Models/Dtos/UserDetailsDto.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Services/AdminServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-29:END -->
 - **Topics:** [f-linq](#f-linq) · [r-ienumerable-icollection](#r-ienumerable-icollection)।
 - **Acceptance:** non-admin denied; no credential fields; deterministic pages।
 
@@ -369,6 +550,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** name/mobile keyword।
 - **Rules:** BR-19–20 (Section 13)।
 - **Responsible:** AdminService।
+<!-- FEATURE-FILES:F-30:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/AdminService.cs`, `Repositories/InMemoryUserRepository.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Services/AdminServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-30:END -->
 - **Topics:** [f-string](#f-string) · [f-lambda](#f-lambda)।
 - **Acceptance:** case-insensitive name; empty policy; no match safe।
 
@@ -377,6 +564,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** admin safe user/account projection।
 - **Rules:** BR-19–20 (Section 13)।
 - **Responsible:** AdminService/UserDetailsDto।
+<!-- FEATURE-FILES:F-31:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/Dtos/UserDetailsDto.cs`, `Services/AdminService.cs`, `Repositories/IAccountRepository.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Services/AdminServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-31:END -->
 - **Topics:** [o-immutability](#o-immutability) · [o-copy](#o-copy)।
 - **Acceptance:** no hash/salt; DTO cannot mutate live state।
 
@@ -385,6 +578,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** admin Active↔Suspended+reason।
 - **Rules:** BR-06,19 (Section 13)।
 - **Responsible:** AdminService/AuditService/store।
+<!-- FEATURE-FILES:F-32:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/AdminService.cs`, `Services/AuditService.cs`, `Models/Account.cs`, `Services/SessionManager.cs`, `Data/InMemoryStateStore.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Services/AdminServiceTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-32:END -->
 - **Topics:** [o-encapsulation](#o-encapsulation) · [o-association](#o-association)।
 - **Acceptance:** reason required; target session invalidated; system/agent protected; status+audit same publication।
 
@@ -393,6 +592,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** all attempts filters।
 - **Rules:** BR-19 (Section 13)।
 - **Responsible:** AdminService/TransactionQuery।
+<!-- FEATURE-FILES:F-33:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/AdminService.cs`, `Models/TransactionQuery.cs`, `Models/DateRange.cs`, `Repositories/InMemoryTransactionRepository.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Services/AdminServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-33:END -->
 - **Topics:** [f-linq](#f-linq) · [r-deferred-execution](#r-deferred-execution)।
 - **Acceptance:** authorized; 10k synthetic fixture timings documented, no universal SLA।
 
@@ -401,6 +606,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** date/type volume/fee/failures।
 - **Rules:** BR-19 (Section 13)।
 - **Responsible:** ReportService।
+<!-- FEATURE-FILES:F-34:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/ReportService.cs`, `Models/DateRange.cs`, `Repositories/ITransactionRepository.cs`, `UI/AdminMenu.cs`, `UI/ConsoleUi.cs`।
+  - **Test file:** `Services/ReportServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-34:END -->
 - **Topics:** [f-linq](#f-linq) · [f-string](#f-string)।
 - **Acceptance:** Completed principal/fee only; fixture totals match; no unnecessary async wrapper।
 
@@ -409,6 +620,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** counts/volume/fee/success ratio।
 - **Rules:** BR-19 (Section 13)।
 - **Responsible:** ReportService/SummaryStatisticsDto।
+<!-- FEATURE-FILES:F-35:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/Dtos/SummaryStatisticsDto.cs`, `Services/ReportService.cs`, `Repositories/IUserRepository.cs`, `Repositories/ITransactionRepository.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Services/ReportServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-35:END -->
 - **Topics:** [f-linq](#f-linq) · [f-operators](#f-operators)।
 - **Acceptance:** zero attempts ratio N/A; empty Average safe।
 
@@ -417,6 +634,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** append-only action/access outcome।
 - **Rules:** BR-19–20 (Section 13)।
 - **Responsible:** AuditService/audit repo।
+<!-- FEATURE-FILES:F-36:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Services/AuditService.cs`, `Models/AuditLogEntry.cs`, `Enums/AuditAction.cs`, `Repositories/IAuditLogRepository.cs`, `Repositories/InMemoryAuditLogRepository.cs`, `Services/AdminService.cs`, `Services/AuthService.cs`, `Data/AppState.cs`, `Data/InMemoryStateStore.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Services/AdminServiceTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-36:END -->
 - **Topics:** [o-immutability](#o-immutability) · [o-composition](#o-composition)।
 - **Acceptance:** actor/action/target/time/outcome/reason; no edit/delete; no tamper-proof claim।
 
@@ -431,6 +654,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** main/user; admin Core-এ।
 - **Rules:** BR-21 (Section 13)।
 - **Responsible:** MainMenu/UserMenu/AdminMenu।
+<!-- FEATURE-FILES:F-37:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `UI/MainMenu.cs`, `UI/UserMenu.cs`, `UI/AdminMenu.cs`, `UI/ConsoleUi.cs`, `UI/InputReader.cs`, `Program.cs`।
+  - **Test file:** `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-37:END -->
 - **Topics:** [f-loops](#f-loops) · [f-conditions](#f-conditions)।
 - **Acceptance:** invalid choice safe; EOF exit; back/logout; menu hiding not sole security।
 
@@ -439,6 +668,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** parse/retry/masked PIN।
 - **Rules:** BR-01–03,07 (Section 13)।
 - **Responsible:** InputReader/InputValidator।
+<!-- FEATURE-FILES:F-38:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `UI/InputReader.cs`, `Utilities/InputValidator.cs`, `UI/MainMenu.cs`, `UI/UserMenu.cs`, `UI/AdminMenu.cs`, `UI/ConsoleUi.cs`।
+  - **Test file:** `Utilities/InputValidatorTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-38:END -->
 - **Topics:** [f-string](#f-string) · [r-params-ref-out-in](#r-params-ref-out-in)।
 - **Acceptance:** empty/huge/negative safe; redirected input/EOF; culture explicit।
 
@@ -447,6 +682,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** expected vs unexpected।
 - **Rules:** BR-15,20 (Section 13)।
 - **Responsible:** OperationResult/UI/Program।
+<!-- FEATURE-FILES:F-39:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Models/OperationResult.cs`, `Exceptions/BkashException.cs`, `Exceptions/StateCommitException.cs`, `Program.cs`, `UI/MainMenu.cs`, `UI/UserMenu.cs`, `UI/AdminMenu.cs`, `Logging/IAppLogger.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Data/StateStoreTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-39:END -->
 - **Topics:** [f-exception-handling](#f-exception-handling) · [r-exception-filters](#r-exception-filters)।
 - **Acceptance:** safe expected result; recoverable log; corrupted-state suspicion safe stop।
 
@@ -455,6 +696,13 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** safe structured diagnostics।
 - **Rules:** BR-20 (Section 13)।
 - **Responsible:** IAppLogger/ConsoleAppLogger।
+<!-- FEATURE-FILES:F-40:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Logging/IAppLogger.cs`, `Logging/ConsoleAppLogger.cs`, `Services/TransactionService.cs`, `Services/AuthService.cs`, `Services/AdminService.cs`, `Program.cs`।
+  - **Test file:** `Fakes/CapturingLogger.cs`, `Services/TransactionServiceTests.cs`, `Services/AdminServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+  - **Optional file logging:** `Logging/FileAppLogger.cs`।
+<!-- FEATURE-FILES:F-40:END -->
 - **Topics:** [o-interface](#o-interface) · [r-idisposable](#r-idisposable)।
 - **Acceptance:** levels/event/correlation; no PIN/hash/full mobile; logger failure no financial rollback।
 
@@ -463,6 +711,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** immutable settings।
 - **Rules:** BR-11–12 (Section 13)।
 - **Responsible:** AppConfiguration।
+<!-- FEATURE-FILES:F-41:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Configuration/AppConfiguration.cs`, `Configuration/FeePolicy.cs`, `Configuration/TransactionLimits.cs`, `Services/SessionManager.cs`, `Services/AuthService.cs`, `Services/FeeCalculator.cs`, `Program.cs`।
+  - **Test file:** `Utilities/FeeCalculatorTests.cs`, `Services/AuthServiceTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-41:END -->
 - **Topics:** [o-readonly-const](#o-readonly-const) · [o-immutability](#o-immutability)।
 - **Acceptance:** invalid config rejected; version recorded; secrets separate।
 
@@ -471,6 +725,12 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** single source of truth।
 - **Rules:** BR-04,15,18 (Section 13)।
 - **Responsible:** InMemoryStateStore/repos।
+<!-- FEATURE-FILES:F-42:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Data/IStateStore.cs`, `Data/InMemoryStateStore.cs`, `Data/AppState.cs`, `Repositories/IUserRepository.cs`, `Repositories/InMemoryUserRepository.cs`, `Repositories/IAccountRepository.cs`, `Repositories/InMemoryAccountRepository.cs`, `Repositories/ITransactionRepository.cs`, `Repositories/InMemoryTransactionRepository.cs`, `Repositories/IAuditLogRepository.cs`, `Repositories/InMemoryAuditLogRepository.cs`, `Data/SeedData.cs`।
+  - **Test file:** `Data/StateStoreTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+<!-- FEATURE-FILES:F-42:END -->
 - **Topics:** [f-collections](#f-collections) · [f-generics](#f-generics)।
 - **Acceptance:** no mutable collection/object leak; registration/transfer one commit।
 
@@ -479,6 +739,13 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** explicit checkpoint।
 - **Rules:** BR-20,26 (Section 13)।
 - **Responsible:** JsonDataStore/DataSnapshot।
+<!-- FEATURE-FILES:F-43:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `Data/DataSnapshot.cs`, `Data/JsonDataStore.cs`, `Data/IStateStore.cs`, `Data/InMemoryStateStore.cs`, `Configuration/AppConfiguration.cs`, `Services/AdminService.cs`, `Services/SessionManager.cs`, `UI/AdminMenu.cs`।
+  - **Test file:** `Data/JsonDataStoreTests.cs`, `Data/StateStoreTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+  - **Optional Feature:** JSON extension শুরু না করলে এই file তৈরি করবে না।
+<!-- FEATURE-FILES:F-43:END -->
 - **Topics:** [f-async](#f-async) · [r-idisposable](#r-idisposable)।
 - **Acceptance:** roundtrip; corrupt/version-invalid old state intact; no session; credential policy।
 
@@ -487,6 +754,13 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** automated rule verification।
 - **Rules:** BR-all (Section 13)।
 - **Responsible:** tests/fakes।
+<!-- FEATURE-FILES:F-44:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `tests/BkashConsoleClone.Tests/BkashConsoleClone.Tests.csproj`, `BkashConsoleClone.slnx`, `docs/test-matrix.md`।
+  - **Test file:** `Models/AccountTests.cs`, `Services/UserServiceTests.cs`, `Services/AuthServiceTests.cs`, `Services/TransactionServiceTests.cs`, `Services/AdminServiceTests.cs`, `Services/ReportServiceTests.cs`, `Utilities/InputValidatorTests.cs`, `Utilities/FeeCalculatorTests.cs`, `Data/StateStoreTests.cs`, `Integration/WorkflowTests.cs`, `Fakes/FakeClock.cs`, `Fakes/FakeIdGenerator.cs`, `Fakes/FakeRechargeGateway.cs`, `Fakes/CapturingLogger.cs`, `Fakes/FaultInjectingStateStore.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+  - **Optional JSON test:** `Data/JsonDataStoreTests.cs`, শুধু JSON extension শুরু হলে।
+<!-- FEATURE-FILES:F-44:END -->
 - **Topics:** [o-interface](#o-interface) · [f-methods](#f-methods)।
 - **Acceptance:** integrity tests before money milestone; actual test output, no assumed pass।
 
@@ -495,6 +769,13 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Purpose / user action:** reproduce/inspect/fix/document।
 - **Rules:** BR-20 (Section 13)।
 - **Responsible:** debugger/learning-log।
+<!-- FEATURE-FILES:F-45:START -->
+- **কোন কোন file তৈরি বা update করতে হবে:**
+  - **Application / সংশ্লিষ্ট file:** `docs/learning-log.md`, `docs/test-matrix.md`, `Logging/ConsoleAppLogger.cs`, `Program.cs`।
+  - **Test file:** `Services/TransactionServiceTests.cs`, `Services/AuthServiceTests.cs`, `Integration/WorkflowTests.cs`।
+  - **তৈরির নিয়ম:** file আগে না থাকলে সংশ্লিষ্ট Phase-এ তৈরি করবে; আগে থাকলে reuse/update করবে, duplicate file নয়।
+  - Debugger-এর জন্য আলাদা production Class দরকার নেই; bug-এর file ও regression test update করবে।
+<!-- FEATURE-FILES:F-45:END -->
 - **Topics:** [f-dependency](#f-dependency) · [o-encapsulation](#o-encapsulation)।
 - **Acceptance:** each milestone bug note+regression test; no secrets in output।
 
