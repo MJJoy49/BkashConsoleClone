@@ -10,7 +10,7 @@
 | বিষয় | মান |
 |---|---|
 | Project Name | `BkashConsoleClone` |
-| Language / Platform | C# / .NET Console Application (Latest LTS) |
+| Language / Platform | C# / .NET Console Application (Latest LTS) |    ||
 | Storage | শুধু In-memory |
 | Testing | xUnit (Phase 4 থেকে) |
 | Version Control | Git + GitHub |
