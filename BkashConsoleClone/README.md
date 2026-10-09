@@ -1,5 +1,24 @@
 ﻿# 📱 BkashConsoleClone – Complete Project & Learning Reference
 
+<!-- BN-HELP:reading-guide:START -->
+**বাংলায় পড়ার সহায়তা:**
+
+Technical term, Code, command, file name, identifier, link ও UI অপরিবর্তিত রাখা হয়েছে। মূল লেখা সরানো হয়নি; বোঝার জন্য বাংলা সহায়তা যোগ হয়েছে।
+
+- **Purpose:** কেন শিখবে। **Mental Model:** সহজ তুলনা। **Syntax Explained:** Code-এর নিয়ম ও চিহ্নের অর্থ।
+- **Small Example:** ছোট শেখার উদাহরণ। **Project Context:** কোন কাজে লাগবে। **Prerequisite:** আগে কী জানা দরকার।
+- **Code Idea / Hint:** নিজে শুরু করার সহায়তা। **Data Flow:** তথ্যের চলার পথ। **Industry Usage:** software কাজে ব্যবহার।
+- **Best Practices / Pitfalls:** ভালো অভ্যাস ও সাধারণ ভুল। **Alternatives:** অন্য উপায়। **My Task:** নিজের করার কাজ।
+- **Testing / Expected Result:** কী পরীক্ষা করবে ও কী ফল হওয়ার কথা। **Review:** নিজের কাজ ও ব্যাখ্যা যাচাই।
+- **MVP / Core / Advanced:** ধাপে ধাপে কাজের স্তর। **Optional:** মূল app-এ যোগ বাধ্যতামূলক নয়; mandatory lesson বাদ নয়।
+- **Roadmap / Phase / Exit Gate:** শেখার ধাপ ও পরের ধাপে যাওয়ার শর্ত। **Coverage:** lesson/task নির্ধারিত, আয়ত্তের প্রমাণ নয়।
+- **Functional Requirement:** system কী করবে। **Non-Functional Requirement:** কীভাবে ভালোভাবে করবে।
+- **Folder Structure / Responsibility:** কোন file কোথায় এবং কী দায়িত্ব। UI কথা বলে, Service নিয়ম চালায়, Model তথ্য ও invariant ধরে।
+- **Checklist / Limitation:** কাজ শেষে মিলিয়ে দেখা এবং কী নিশ্চয়তা নেই। Happy path যথেষ্ট নয়; boundary/failure Test-ও লাগবে।
+
+আগে সহজ ব্যাখ্যা পড়বে, তারপর ছোট Code-এর ফল অনুমান করবে। Lab চালিয়ে ফল মিলাবে, নিজে task করবে, তারপর Review। Full project/Feature/file solution নয়। মূল Rule, Acceptance ও Expected Result-ই authoritative; বাংলা তুলনা সেগুলোর বিকল্প নয়। এই পরিবর্তনে application বা C# Test চালানো হয়নি।
+<!-- BN-HELP:reading-guide:END -->
+
 &gt; **Educational console simulation: নিজে code লিখে C# শেখা।**
 &gt;
 &gt; **Disclaimer:** real bKash account, real money, payment gateway, SMS/OTP বা financial transaction নেই। bKash-এর সঙ্গে affiliation নেই। Security, compliance, durability বা production-readiness দাবি নয়। সব fee/limit/identity/balance invented simulation data। Real credential ব্যবহার করবে না।
@@ -57,6 +76,10 @@ User registration/login, wallet balance, cash in/out, send money, recharge simul
 
 ## Scope
 
+<!-- BN-HELP:section-Scope:START -->
+**সহজ বাংলায় এই অংশ:** এই project শিক্ষামূলক Console simulation। বাস্তব টাকা বা বাস্তব Account নয়। Scope বলে কোন কাজ আছে ও কোন কাজ নেই; বর্তমান in-memory সীমা অপরিবর্তিত।
+<!-- BN-HELP:section-Scope:END -->
+
 In scope: user/admin/session; personal/seeded-agent/system wallet; four transaction types; fees/limits; validation; immutable terminal history; retry/idempotency; audit; in-memory consistency; optional JSON checkpoint।
 
 Out of scope: SQL Server/PostgreSQL/MySQL/SQLite/NoSQL/EF Core; real payments/OTP/SMS/telecom; real KYC/AML; web/mobile/API implementation; microservices; distributed processing; production availability। Future database শুধু conceptual discussion, explicit new scope ছাড়া যোগ নয়।
@@ -86,6 +109,10 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 # 2. Complete Feature List
 
 ## User Management
+
+<!-- BN-HELP:section-User-Management:START -->
+**সহজ বাংলায় এই অংশ:** User-এর পরিচয় তৈরি, Login ও Profile-এর কাজ এখানে। Purpose / user action মানে কাজের উদ্দেশ্য; Rules মানে মানার নিয়ম; Responsible মানে দায়িত্বশীল অংশ; Acceptance মানে শেষ হওয়ার যাচাই।
+<!-- BN-HELP:section-User-Management:END -->
 
 ### F-01 · Registration [MVP]
 
@@ -145,6 +172,10 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 
 ## Account Management
 
+<!-- BN-HELP:section-Account-Management:START -->
+**সহজ বাংলায় এই অংশ:** Account-এর Balance, Status ও মালিকানার নিয়ম এখানে। শুধু UI-তে Button লুকিয়ে নয়, Service-এর boundary-তেও অনুমতি ও নিয়ম যাচাই করতে হবে।
+<!-- BN-HELP:section-Account-Management:END -->
+
 ### F-08 · Account Creation [MVP]
 
 - **Purpose / user action:** registration-এর সঙ্গে personal wallet।
@@ -186,6 +217,10 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Acceptance:** no public setter; positive movements; overflow no publication।
 
 ## Transaction Management
+
+<!-- BN-HELP:section-Transaction-Management:START -->
+**সহজ বাংলায় এই অংশ:** লেনদেনের input, quote, confirmation ও commit-এর নিয়ম এখানে। সব প্রস্তুত ও যাচাই করে তারপর publish করবে। আগের Amount, Fee, Limit ও Acceptance অপরিবর্তিত।
+<!-- BN-HELP:section-Transaction-Management:END -->
 
 ### F-13 · Cash In [MVP]
 
@@ -309,6 +344,10 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 
 ## Admin Features
 
+<!-- BN-HELP:section-Admin-Features:START -->
+**সহজ বাংলায় এই অংশ:** Admin-এর কাজ ও অনুমতির সীমা এখানে। Actor কে এবং কোন কাজের অনুমতি আছে তা Service যাচাই করবে। নিচের Feature-ID ও Rules অপরিবর্তিত।
+<!-- BN-HELP:section-Admin-Features:END -->
+
 ### F-28 · Admin Login [Core]
 
 - **Purpose / user action:** admin authenticate/authorize।
@@ -382,6 +421,10 @@ Skills: requirements→design→implementation→tests→review, type-safe data,
 - **Acceptance:** actor/action/target/time/outcome/reason; no edit/delete; no tamper-proof claim।
 
 ## System Features
+
+<!-- BN-HELP:section-System-Features:START -->
+**সহজ বাংলায় এই অংশ:** System-এর সহায়ক কাজ এখানে। Required state update ও optional notification আলাদা; পরে notice ব্যর্থ হলে committed ফল বদলাবে না।
+<!-- BN-HELP:section-System-Features:END -->
 
 ### F-37 · Menus [MVP]
 
@@ -673,6 +716,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## User
 
+<!-- BN-HELP:section-User:START -->
+**সহজ বাংলায় এই অংশ:** User-এর পরিচয় ও account-সংক্রান্ত তথ্যের Model। Property তথ্যের নাম, Type মানের ধরন, R প্রয়োজনীয়, O অনুপস্থিত থাকতে পারে। Identifier English-এ আছে, Code-এর সঙ্গে মেলাবে।
+<!-- BN-HELP:section-User:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | Id | string | R | opaque |
@@ -686,6 +733,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## PinCredential
 
+<!-- BN-HELP:section-PinCredential:START -->
+**সহজ বাংলায় এই অংশ:** PIN যাচাইয়ের Credential তথ্য। plaintext PIN প্রকাশ বা স্থায়ীভাবে রাখা নয়। নিচের hash, salt ও algorithm-এর technical নাম অপরিবর্তিত।
+<!-- BN-HELP:section-PinCredential:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | HashBase64 | string | R | derived key |
@@ -697,6 +748,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## Account
 
+<!-- BN-HELP:section-Account:START -->
+**সহজ বাংলায় এই অংশ:** Account-এর তথ্য ও invariant এখানে। Balance বাইরে থেকে পড়া গেলেও ইচ্ছেমতো বদলানো যাবে না। Ownership ও validated transition দুটোই দরকার।
+<!-- BN-HELP:section-Account:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | Number | string | R | immutable; Personal mobile format, seeded Agent/System opaque ID |
@@ -707,6 +762,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 | CreatedAtUtc | DateTimeOffset | R | UTC |
 
 ## Transaction
+
+<!-- BN-HELP:section-Transaction:START -->
+**সহজ বাংলায় এই অংশ:** একটি operation-এর ঐতিহাসিক তথ্য। Actor/source/destination-এর সম্পর্ক ID দিয়ে থাকবে। Completed তথ্য পরে অন্য Account পরিবর্তনে বদলাবে না।
+<!-- BN-HELP:section-Transaction:END -->
 
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
@@ -730,6 +789,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## BalancePosting
 
+<!-- BN-HELP:section-BalancePosting:START -->
+**সহজ বাংলায় এই অংশ:** কোন Account-এ কত পরিবর্তন হয়েছে তার তথ্য। Posting-গুলোর হিসাব মিলতে হবে; Transaction-এর owned immutable facts হিসেবে থাকবে।
+<!-- BN-HELP:section-BalancePosting:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | AccountNumber | string | R | existing |
@@ -738,6 +801,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 | BalanceAfter | decimal | R | before+delta |
 
 ## TransactionReceipt
+
+<!-- BN-HELP:section-TransactionReceipt:START -->
+**সহজ বাংলায় এই অংশ:** User-কে দেখানোর সফল কাজের snapshot। পরে Balance বদলালেও পুরোনো Receipt-এর তথ্য বদলাবে না। Secret প্রকাশ নয়।
+<!-- BN-HELP:section-TransactionReceipt:END -->
 
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
@@ -754,6 +821,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## AuditLogEntry
 
+<!-- BN-HELP:section-AuditLogEntry:START -->
+**সহজ বাংলায় এই অংশ:** কে কী কাজ করেছে তার নির্ধারিত Audit তথ্য। এটি প্রয়োজনীয় প্রমাণ; optional notification-এর failure-এর ওপর নির্ভর করে হারাবে না।
+<!-- BN-HELP:section-AuditLogEntry:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | Id | string | R | unique |
@@ -767,6 +838,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## UserSession
 
+<!-- BN-HELP:section-UserSession:START -->
+**সহজ বাংলায় এই অংশ:** বর্তমানে Login করা User-এর Session তথ্য। Session অনুপস্থিত হতে পারে; প্রতিটি কাজের অনুমতি ও বর্তমান Status আবার যাচাই হবে।
+<!-- BN-HELP:section-UserSession:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | UserId | string | R | identity |
@@ -776,6 +851,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 | SessionId | string | R | opaque |
 
 ## FeePolicy
+
+<!-- BN-HELP:section-FeePolicy:START -->
+**সহজ বাংলায় এই অংশ:** Fee হিসাবের simulation policy। নিচের rate, rounding ও নিয়ম বদলানো হয়নি; এগুলো বাস্তব provider-এর fee বলে ধরে নেবে না।
+<!-- BN-HELP:section-FeePolicy:END -->
 
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
@@ -788,6 +867,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## TransactionLimits
 
+<!-- BN-HELP:section-TransactionLimits:START -->
+**সহজ বাংলায় এই অংশ:** Amount ও transaction-এর সীমার simulation নিয়ম। ঠিক সীমায় ও সীমার বাইরে Test করবে; সংখ্যা অপরিবর্তিত।
+<!-- BN-HELP:section-TransactionLimits:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | Type | TransactionType | R | kind |
@@ -796,6 +879,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 | DailyMaximum | decimal | R | &gt;=max |
 
 ## AppConfiguration
+
+<!-- BN-HELP:section-AppConfiguration:START -->
+**সহজ বাংলায় এই অংশ:** Application-এর policy ও settings একসঙ্গে রাখার তথ্য। Hidden global mutable state নয়; Configuration-এর ownership ও immutability বুঝবে।
+<!-- BN-HELP:section-AppConfiguration:END -->
 
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
@@ -812,6 +899,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## TransactionRequest
 
+<!-- BN-HELP:section-TransactionRequest:START -->
+**সহজ বাংলায় এই অংশ:** User যে কাজ করতে চায় তার input। Request মানেই অনুমোদিত কাজ নয়; Validation ও Authorization এখনও লাগবে।
+<!-- BN-HELP:section-TransactionRequest:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | Type | TransactionType | R | kind |
@@ -822,6 +913,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## TransactionQuote
 
+<!-- BN-HELP:section-TransactionQuote:START -->
+**সহজ বাংলায় এই অংশ:** Commit-এর আগে সম্ভাব্য Amount, Fee ও ফলের হিসাব। Quote দেখা মানেই টাকা সরানো নয়; confirmation ও final validation-এর নিয়ম মানবে।
+<!-- BN-HELP:section-TransactionQuote:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | Amount | decimal | R | requested |
@@ -831,12 +926,20 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## DateRange
 
+<!-- BN-HELP:section-DateRange:START -->
+**সহজ বাংলায় এই অংশ:** তারিখের শুরু ও শেষের মান। Boundary, ordering ও default value যাচাই করবে; ছোট Value Type হলেই সব মান valid নয়।
+<!-- BN-HELP:section-DateRange:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | StartUtc | DateTimeOffset | R | inclusive |
 | EndUtcExclusive | DateTimeOffset | R | &gt;start |
 
 ## TransactionQuery
+
+<!-- BN-HELP:section-TransactionQuery:START -->
+**সহজ বাংলায় এই অংশ:** History খোঁজার Filter ও Sort-এর input। User শুধু অনুমতি থাকা তথ্য পাবে; query input Business Rule bypass করবে না।
+<!-- BN-HELP:section-TransactionQuery:END -->
 
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
@@ -860,6 +963,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## IdempotencyEntry
 
+<!-- BN-HELP:section-IdempotencyEntry:START -->
+**সহজ বাংলায় এই অংশ:** একই request retry হলে আগের ফল চেনার তথ্য। শুধু key আছে কি না নয়, payload ও result-এর নিয়মও মানতে হবে।
+<!-- BN-HELP:section-IdempotencyEntry:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | ActorUserId | string | R | scope |
@@ -869,6 +976,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 | OriginalResult | OperationResult&lt;TransactionReceipt&gt; | R | safe result |
 
 ## UserDetailsDto
+
+<!-- BN-HELP:section-UserDetailsDto:START -->
+**সহজ বাংলায় এই অংশ:** দেখানোর জন্য বাছাই করা User তথ্য। DTO দিয়ে live mutable Model বা Credential বাইরে প্রকাশ করবে না।
+<!-- BN-HELP:section-UserDetailsDto:END -->
 
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
@@ -881,6 +992,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## SummaryStatisticsDto
 
+<!-- BN-HELP:section-SummaryStatisticsDto:START -->
+**সহজ বাংলায় এই অংশ:** Report-এর গণনা করা ফল। Completed ও Failed-এর অর্থ আলাদা রেখে মূল হিসাবের নিয়ম মানবে।
+<!-- BN-HELP:section-SummaryStatisticsDto:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | UserCount | int | R | User-role personal users only; Admin excluded |
@@ -891,6 +1006,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 | SuccessRate | decimal? | O | zero attempts null |
 
 ## AppState
+
+<!-- BN-HELP:section-AppState:START -->
+**সহজ বাংলায় এই অংশ:** চলমান application-এর canonical state। Candidate আলাদা করে প্রস্তুত, validate, তারপর publish; live mutable reference leak নয়।
+<!-- BN-HELP:section-AppState:END -->
 
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
@@ -904,6 +1023,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 
 ## DataSnapshot [Optional]
 
+<!-- BN-HELP:section-DataSnapshot--Optional-:START -->
+**সহজ বাংলায় এই অংশ:** Optional export/import-এর snapshot। এটি বর্তমান storage-কে Database বানায় না; validation ও secret-handling নিয়ম অপরিবর্তিত।
+<!-- BN-HELP:section-DataSnapshot--Optional-:END -->
+
 | Property | Type | Required | Purpose/rule |
 |---|---|---|---|
 | SchemaVersion | int | R | supported |
@@ -916,6 +1039,10 @@ R=required, O=optional। IDs/mobile string, money decimal, timestamps UTC DateT
 | BaselineTotal | decimal | R | conservation |
 
 ## Model ownership/lookup/topic
+
+<!-- BN-HELP:section-Model-ownership-lookup-topic:START -->
+**সহজ বাংলায় এই অংশ:** কে তথ্যের মালিক, কোন Key দিয়ে খোঁজা হয় এবং কোন Topic শেখা হবে তা একসঙ্গে দেখায়। একই entity-র দুই canonical mutable copy নয়।
+<!-- BN-HELP:section-Model-ownership-lookup-topic:END -->
 
 User owns Credential; User role has one Personal Account, Admin default no wallet; seeded Agent/System owner null। Account has many postings; Transaction owns immutable postings and references actor/source/destination IDs। Receipt/DTO transient safe projection, not stored source of truth। Session references identity only। Config composed immutable policies।
 
@@ -1434,6 +1561,13 @@ Snippets isolated fragments, same project/file-এ সব paste করবে ন
 
 **2. Definition:** typed variable value/reference রাখে; var inferred static type, dynamic নয়।
 
+<!-- BN-HELP:f-variables:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+নাম লেখা বাক্সে তথ্য রাখার মতো Variable। Data Type বলে বাক্সে লেখা না সংখ্যা থাকবে। `string code = "00125"`-এ শুরুর `00` থাকে; `decimal price = 19.95m` দশমিক মান রাখে। `var` হলেও Type নির্দিষ্ট। Project-এ MobileNumber/PIN লেখা, Amount/Balance decimal হবে।
+
+<!-- BN-HELP:f-variables:END -->
+
 **3. Purpose:** typed domain/API/config-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P4; F-38/09; InputReader/Account।
 
 **4. Mental Model:** সঠিক বাক্সে সঠিক data: mobile/PIN text, money decimal।
@@ -1476,6 +1610,13 @@ decimal price = 19.95m;
 **1. Topic Name:** Operators।
 
 **2. Definition:** arithmetic/comparison/logical/assignment operators; && short-circuit।
+
+<!-- BN-HELP:f-operators:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+৩টি পেন্সিলের সঙ্গে ২টি যোগ করলে ৫টি। `+` হিসাবের Operator; `>` তুলনা করে। `=` মান বসায়, `==` সমান কি না দেখে। `&&`-এ দুই শর্তই ঠিক হতে হয়; প্রথমটি ভুল হলে দ্বিতীয়টি আর পরীক্ষা হয় না। Project-এ Amount ও Fee যোগ, Status ও Balance যাচাইয়ে লাগবে।
+
+<!-- BN-HELP:f-operators:END -->
 
 **3. Purpose:** pricing/eligibility-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P5; F-26/23; FeeCalculator/Validator।
 
@@ -1520,6 +1661,13 @@ bool valid = total > 0m && total <= 200m;
 
 **2. Definition:** if/switch branches; switch expression produces value, statement workflow চালায়।
 
+<!-- BN-HELP:f-conditions:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+বৃষ্টি হলে ছাতা নেবে, না হলে নেবে না। পরিস্থিতি দেখে কাজ বেছে নেওয়াই Condition। উদাহরণে choice 2 হলে switch থেকে Help পাওয়া যায়; `_` অন্য মানের পথ। Project-এ Menu Choice অনুযায়ী কাজ চলবে, Suspended Account হলে transaction বন্ধ হবে।
+
+<!-- BN-HELP:f-conditions:END -->
+
 **3. Purpose:** navigation/rules-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P5; F-37/23; MainMenu/Validator।
 
 **4. Mental Model:** রাস্তার sign দেখে এক পথ; menu বনাম label selection।
@@ -1562,6 +1710,13 @@ string label = choice switch { 1 => "Start", 2 => "Help", _ => "Unknown" };
 **1. Topic Name:** Loops।
 
 **2. Definition:** for/while/do-while/foreach repetition; break/continue/return আলাদা।
+
+<!-- BN-HELP:f-loops:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+ঝুড়ির প্রতিটি আপেল একবার গোনার মতো Loop একই কাজ বারবার করে। foreach উদাহরণে A তারপর B দেখায়। while আগে শর্ত দেখে, do-while প্রথম কাজের পরে দেখে। break Loop থেকে বের হয়। Project-এ Menu পুনরায় দেখানো ও History পড়তে লাগবে; Exit/EOF-এ থামবে।
+
+<!-- BN-HELP:f-loops:END -->
 
 **3. Purpose:** batch/input/retry-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P5; F-37/17; MainMenu/history।
 
@@ -1606,6 +1761,13 @@ foreach (string item in new[] { "A", "B" })
 
 **2. Definition:** named behavior parameters/return নেয়; by-value default copies argument value, reference valueও।
 
+<!-- BN-HELP:f-methods:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+ছোট মেশিনে সংখ্যা দিলে বর্গ করে ফেরত দেয়। Method নাম দেওয়া এমন কাজের অংশ। Square(3)-এ value 3, value*value থেকে 9। Parameter তথ্য নেয়, Return ফল দেয়। `=>` এখানে ছোট Method body। Project-এ Input, Validation ও Display আলাদা Method-এ রাখবে।
+
+<!-- BN-HELP:f-methods:END -->
+
 **3. Purpose:** services/calculations-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P3; F-38/01; InputReader/UserService।
 
 **4. Mental Model:** এক station: input→focused work→output।
@@ -1647,6 +1809,13 @@ static int Square(int value) => value * value;
 **1. Topic Name:** Arrays & Collections।
 
 **2. Definition:** array fixed length indexed reference type; elements mutable; collection broader family।
+
+<!-- BN-HELP:f-arrays:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+ট্রেতে নির্দিষ্ট সংখ্যক ঘরের মতো Array। একই Array-এর Length বদলায় না, item বদলাতে পারে। Array.Sort উদাহরণের 3,1,2-কে 1,2,3 করে। প্রথম Index 0। Project-এ স্থির Menu বা Test data-তে কাজে লাগবে; বাড়তে থাকা তালিকায় List সুবিধাজনক।
+
+<!-- BN-HELP:f-arrays:END -->
 
 **3. Purpose:** buffers/fixed fixtures-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P3; menu/boundary fixtures; FoundationLab।
 
@@ -1690,6 +1859,13 @@ Array.Sort(values);
 **1. Topic Name:** List, Dictionary, HashSet।
 
 **2. Definition:** List ordered dynamic; Dictionary average O(1) key lookup; HashSet membership/uniqueness, result cache নয়।
+
+<!-- BN-HELP:f-collections:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+খাতার তালিকা List, নাম ধরে নম্বর খোঁজার সূচি Dictionary, duplicate স্টিকার না নেওয়া বাক্স HashSet-এর মতো। Dictionary Key দিয়ে Value খোঁজে। HashSet দ্বিতীয় A নতুন করে নেয় না। Project-এ User lookup-এ Dictionary; Retry-এর আগের ফল ফেরাতে শুধু HashSet যথেষ্ট নয়।
+
+<!-- BN-HELP:f-collections:END -->
 
 **3. Purpose:** indexes/caches/sets-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P9; F-42/25; AppState/GenericRepositoryLab।
 
@@ -1735,6 +1911,13 @@ bool first = seen.Add("A");
 
 **2. Definition:** string immutable reference; StringBuilder mutable text builder; culture formatting explicit।
 
+<!-- BN-HELP:f-string:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+String-এর লেখা বদলালে পুরোনো String-এর অক্ষর ভেতরে বদলায় না; নতুন ফল হয়। StringBuilder অনেক লাইন জোড়া দেওয়ার খসড়া খাতার মতো। AppendLine লাইন যোগ করে, F2 দুই দশমিক ঘর দেখায়, ToString পুরো লেখা দেয়। Project-এ Receipt, Validation ও masking-এ লাগবে।
+
+<!-- BN-HELP:f-string:END -->
+
 **3. Purpose:** parsing/display/reports-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P7; F-38/19; InputReader/ReceiptPrinter।
 
 **4. Mental Model:** new লেখা বনাম scratchpad draft।
@@ -1778,6 +1961,13 @@ builder.AppendLine($"Value: {12.5m:F2}");
 **1. Topic Name:** Exception Handling (General)।
 
 **2. Definition:** try/catch/finally exceptional flow; specific catches আগে; throw rethrow preserves stack।
+
+<!-- BN-HELP:f-exception-handling:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+খেলনা আটকে গেলে সমস্যা সামলানোর পথ দরকার। Exception ব্যতিক্রমী সমস্যার খবর। try চেষ্টা করে, catch সামলায়, finally সাধারণ শেষে cleanup করে। int.Parse("bad") FormatException দেয়। Project-এ ভুল Menu Choice স্বাভাবিক Validation; precommit fault-এ পুরোনো state অক্ষুণ্ণ থাকবে। হঠাৎ process বন্ধ হলে cleanup নিশ্চিত নয়।
+
+<!-- BN-HELP:f-exception-handling:END -->
 
 **3. Purpose:** I/O/error propagation-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P5; F-39/24; boundary/custom exception lab।
 
@@ -1825,6 +2015,13 @@ finally { Console.WriteLine("Cleanup"); }
 
 **2. Definition:** type parameter typed reuse; caller concrete type supplies।
 
+<!-- BN-HELP:f-generics:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+একই বাক্সের নকশা পেন্সিল বা বইয়ের জন্য ব্যবহার করা Generics-এর মতো। প্রতিটি ব্যবহারে Type নির্দিষ্ট হয়। Echo(7)-এ T int, পাওয়া মান ফেরত আসে। Project-এ OperationResult বিভিন্ন Type-এর ফল রাখবে। শুধু শেখাতে সব Model-এর নিয়ম forced generic CRUD-এ ঢোকাবে না।
+
+<!-- BN-HELP:f-generics:END -->
+
 **3. Purpose:** collections/results/libraries-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P6; F-42/39; OperationResult/GenericRepositoryLab।
 
 **4. Mental Model:** এক template, compiler-controlled contents।
@@ -1870,6 +2067,13 @@ int number = Echo(7);
 
 **2. Definition:** type-safe callable reference; Func returns, Action void; custom delegate signature।
 
+<!-- BN-HELP:f-delegates:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+কার্ডে কোন মেশিনকে ডাকতে হবে লেখা আছে। Delegate Method ডাকার এমন Type-checked মান। Func<int,bool> int নেয়, bool দেয়। isEven(4) true, isEven(3) false। Action আলাদা ফল দেয় না। Project-এ Filter callback-এ লাগবে; callback-এ hidden Balance mutation নয়।
+
+<!-- BN-HELP:f-delegates:END -->
+
 **3. Purpose:** callbacks/predicates-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P7; F-22; query/FoundationLab।
 
 **4. Mental Model:** method-এর কাজের ঠিকানা।
@@ -1914,6 +2118,13 @@ bool answer = isEven(4);
 **1. Topic Name:** Events।
 
 **2. Definition:** publisher-controlled delegate notification; outsiders subscribe/unsubscribe, publisher raises।
+
+<!-- BN-HELP:f-events:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+স্কুলের ঘণ্টা খবর দেয়, সবার কাজ নিজে করে না। Event এমন notification। `+=` Subscriber যোগ করে, `-=` সরায়। `?.Invoke` Subscriber না থাকলে ডাকে না, কিন্তু Subscriber-এর Exception সামলায় না। Project-এ optional postcommit notice; Required Audit/History শুধু Event-এ ছেড়ে দেওয়া নয়।
+
+<!-- BN-HELP:f-events:END -->
 
 **3. Purpose:** UI/optional observers-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P7; optional notice; ConsoleNotificationSubscriber।
 
@@ -1961,6 +2172,13 @@ private void RaiseChanged() => Changed?.Invoke(this, EventArgs.Empty);
 
 **2. Definition:** anonymous function compatible delegate/expression tree; closure captures variables।
 
+<!-- BN-HELP:f-lambda:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+“যে সংখ্যা দেব তার দ্বিগুণ করো” ছোট নামহীন Function হিসেবে Lambda-তে লেখা যায়। value=>value*2-এ 3 দিলে 6। বাইরের Variable ধরলে তার পরের পরিবর্তন প্রভাব ফেলতে পারে; এটি Closure। Project-এ LINQ Filter/Sort-এর ছোট নিয়ম; বড় Business Rule নাম দেওয়া Method-এ।
+
+<!-- BN-HELP:f-lambda:END -->
+
 **3. Purpose:** LINQ/callbacks-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P7; F-22/30; query/AdminService।
 
 **4. Mental Model:** inline rule, captured threshold সময়ের সঙ্গে বদলায়।
@@ -2005,6 +2223,13 @@ Console.WriteLine(twice(3));
 **1. Topic Name:** LINQ।
 
 **2. Definition:** typed query operators; Where deferred, Sum/Count/ToList immediate; SQL নয়।
+
+<!-- BN-HELP:f-linq:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+ফলের ঝুড়ি থেকে বাছাই, সাজানো ও গোনার মতো LINQ Collection query করে। Where জোড় 2 ও 4 নেয়, Sum থেকে 6। কিছু কাজ enumeration-এর সময় চলে, কিছু সঙ্গে সঙ্গে হিসাব করে। Project-এ History ও Report; Failed transaction সফল volume/fee-তে নয়।
+
+<!-- BN-HELP:f-linq:END -->
 
 **3. Purpose:** reports/projections-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P5 basic/P7–8 deep; F-17/22/34; services।
 
@@ -2051,6 +2276,13 @@ int total = numbers.Where(n => n % 2 == 0).Sum();
 
 **2. Definition:** await suspends continuation until completion without blocking wait; new thread automatic নয়।
 
+<!-- BN-HELP:f-async:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+খাবার গরম হওয়ার অপেক্ষার মতো অসম্পূর্ণ কাজের পরে বাকি অংশ চালাতে async/await সাহায্য করে। নিজে থেকে নতুন Thread নয়। Task.Delay-এর অপেক্ষা শেষে উদাহরণে 7 ফেরত আসে। Project-এ Fake Gateway/optional I/O; await নিজে atomic commit বা interactive Menu দেয় না।
+
+<!-- BN-HELP:f-async:END -->
+
 **3. Purpose:** I/O orchestration-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P9/P11; F-16/43; fake gateway/AsyncLab।
 
 **4. Mental Model:** waiting≠parallel workers; চুলা চলাকালে অন্য কাজ সম্ভব।
@@ -2096,6 +2328,13 @@ static async Task<int> ReadLaterAsync()
 
 **2. Definition:** Task eventual completion/result; may have no dedicated thread. Thread execution path; Task.Run typically pool CPU scheduling।
 
+<!-- BN-HELP:f-task-thread:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+Task কাজের Ticket ও ফলের মতো, Thread নির্দেশ চালানোর পথ। Ticket থাকলেই dedicated worker ব্যস্ত নয়। Task.Run সাধারণত Thread Pool-এ 2+3 দেয়; await-এ 5। Task.Delay অপেক্ষা। Project-এর আলাদা Lab-এ race শিখবে, live wallet-এ parallel mutation নয়।
+
+<!-- BN-HELP:f-task-thread:END -->
+
 **3. Purpose:** CPU/I/O/concurrency literacy-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P9; AsyncLab/ThreadRaceLab; F-16 support।
 
 **4. Mental Model:** ticket versus worker; waiting ticket worker continuously busy নয়।
@@ -2140,6 +2379,13 @@ int result = await work;
 **1. Topic Name:** record, struct, enum।
 
 **2. Definition:** enum named values; struct value type; record equality helpers, can be mutable; record class reference/record struct value।
+
+<!-- BN-HELP:f-record-struct-enum:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+enum নির্দিষ্ট named state, struct ছোট value-এর তথ্য, record data equality/copy সুবিধা দেয়। Pair record struct Value Type; Label record class Reference Type। record মানেই nested immutable নয়। Project-এ AccountStatus, DateRange ও Receipt-এ লাগবে; undefined enum/default struct-ও যাচাই করবে।
+
+<!-- BN-HELP:f-record-struct-enum:END -->
 
 **3. Purpose:** DTO/value/state-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2/P7; F-04/19/22; enums/receipt/DateRange।
 
@@ -2187,6 +2433,13 @@ record Label(string Text);
 
 **2. Definition:** compiler annotations/flow warnings; reference runtime unchanged; runtime null prevention guarantee নয়।
 
+<!-- BN-HELP:f-nullable:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+বাক্সে “খালি থাকতে পারে” লেখা থাকলে আগে দেখবে। Nullable Compiler-কে অনুপস্থিতির সম্ভাবনা জানায়। label null হলে ?.Length ফল পায় না, ??0 বিকল্প দেয়। `!` শুধু Warning suppress করে, null ঠিক করে না। Project-এ Session/lookup অনুপস্থিতি সামলাবে।
+
+<!-- BN-HELP:f-nullable:END -->
+
 **3. Purpose:** absence contracts-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P0 enabled/P3 explained; F-07/18; session/repo।
 
 **4. Mental Model:** absence label, magic protection নয়।
@@ -2229,6 +2482,13 @@ int length = label?.Length ?? 0;
 **1. Topic Name:** Dependency Concepts।
 
 **2. Definition:** object/project/package dependency আলাদা; constructor injection supplies dependency externally।
+
+<!-- BN-HELP:f-dependency:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+ছবি আঁকতে পেন্সিল দরকার, এটি Dependency। বাইরে থেকে পেন্সিল দেওয়া Constructor Injection-এর মতো। Reader দেওয়া Func রাখে ও ব্যবহার করে। Object dependency, Project reference ও Package আলাদা। Project-এ Program.cs wiring; Test-এ FakeClock দিয়ে অপেক্ষা ছাড়াই সময়ের নিয়ম পরীক্ষা।
+
+<!-- BN-HELP:f-dependency:END -->
 
 **3. Purpose:** composition/testability-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P0/P3/P10; Program/csproj/contracts।
 
@@ -2276,6 +2536,13 @@ public Reader(Func<int> read) { _read = read; }
 
 **2. Definition:** class blueprint/type, object instance with identity/state; new invokes creation।
 
+<!-- BN-HELP:o-class-object:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+খেলনা গাড়ির নকশা Class, বানানো গাড়ি Object। একই নকশার দুটি গাড়ি আলাদা। Note Type, Text তার তথ্য; new instance বানায়। একই লেখা হলেও identity এক নয়। Project-এ User ও Account আলাদা instance, একজনের তথ্য অন্যজনের সঙ্গে মিশবে না।
+
+<!-- BN-HELP:o-class-object:END -->
+
 **3. Purpose:** domain entities/services-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2; F-01/08; User/Account।
 
 **4. Mental Model:** ফর্ম template বনাম filled form।
@@ -2317,6 +2584,13 @@ class Note { public string Text { get; init; } = ""; }
 **1. Topic Name:** Fields vs Properties।
 
 **2. Definition:** field storage; property accessors contract; auto-property backing storage compiler creates।
+
+<!-- BN-HELP:o-fields-properties:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+দোকানের ভেতরের তাক Field, বাইরের জানালা Property-এর মতো। Field তথ্য রাখে, Property পড়া/বসানোর পথ। _count private; Count=>_count শুধু পড়তে দেয়। Auto-property backing storage Compiler বানায়। Project-এ Balance দেখা যাবে, ইচ্ছেমতো negative মান বসানো যাবে না।
+
+<!-- BN-HELP:o-fields-properties:END -->
 
 **3. Purpose:** encapsulated APIs-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2; F-12; Account।
 
@@ -2361,6 +2635,13 @@ public int Count => _count;
 **1. Topic Name:** Access Modifiers।
 
 **2. Definition:** public accessible subject to containing type; private containing type; protected derived; internal same assembly, project shorthand নয়।
+
+<!-- BN-HELP:o-access-modifiers:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+বাড়ির কিছু ঘরে সবাই যায়, কিছু ঘরে নির্দিষ্ট লোক। public খোলা, private নিজের Type-এ, protected derived Type-এ, internal Assembly-তে সীমিত। Compiler অনুমতি দেখে। Project-এ Dictionary private; protected mutable Balance দিয়ে invariant bypass নয়।
+
+<!-- BN-HELP:o-access-modifiers:END -->
 
 **3. Purpose:** library boundaries-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2/P6; Account/AccountInheritanceLab।
 
@@ -2410,6 +2691,13 @@ internal int Local;
 
 **2. Definition:** instance creation initialization; no return type; enforce required state; constructor method-এর মতো ordinary return নয়।
 
+<!-- BN-HELP:o-constructor:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+নতুন খাতায় শুরুতে নাম বসানোর মতো Constructor Object-এর initial state তৈরি করে। new Tag-এ name থেকে Name বসে। Constructor Type-এর নাম, Return Type নেই। Project-এ valid Account initial state; User Model plaintext PIN নয়, Hasher-এর Credential পাবে।
+
+<!-- BN-HELP:o-constructor:END -->
+
 **3. Purpose:** entity initialization-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2; F-08; Account।
 
 **4. Mental Model:** valid object-এর entry gate।
@@ -2455,6 +2743,13 @@ class Tag
 **1. Topic Name:** Constructor Overloading।
 
 **2. Definition:** same type multiple constructors different signatures; this chaining centralizes initialization।
+
+<!-- BN-HELP:o-constructor-overload:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+খাতা শুধু নাম বা নাম ও রং দিয়ে বানানোর মতো Constructor-এর একাধিক input পথ। Tag() থেকে this("untitled") অন্য Constructor ডাকে, initialization এক জায়গায় থাকে। Project-এ meaningful creation variation Lab-এ শিখবে; অকারণে অনেক Constructor নয়।
+
+<!-- BN-HELP:o-constructor-overload:END -->
 
 **3. Purpose:** creation ergonomics-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2/P6; model lab/seed।
 
@@ -2502,6 +2797,13 @@ public Tag(string name) { Name = name; }
 
 **2. Definition:** current instance; this(...) constructor chaining; static method has no instance this।
 
+<!-- BN-HELP:o-this:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+নিজের খাতা আর incoming খাতা আলাদা করতে “আমার নিজেরটি” বলার মতো this বর্তমান Object। this._name=name-এ Field ও Parameter আলাদা। this(...) Constructor chain; Static Method-এর instance this নেই। Project-এ member চেনাতে লাগবে; Extension Parameter-এর this আলাদা ভূমিকা।
+
+<!-- BN-HELP:o-this:END -->
+
 **3. Purpose:** instance initialization-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2; Account/model lab।
 
 **4. Mental Model:** নিজের badge বনাম incoming parameter।
@@ -2544,6 +2846,13 @@ this._name = name;
 **1. Topic Name:** Static Members।
 
 **2. Definition:** type-level field/property/method, not per instance; mutable static shared across tests/lifetimes।
+
+<!-- BN-HELP:o-static-members:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+নিজের খাতা instance-এর, সবার Noticeboard static-এর মতো। Static CreatedCount Type-level shared মান। এক Test-এর পরিবর্তন অন্য Test-এ প্রভাব ফেলতে পারে। Project-এ Lab-এ shared lifetime শিখবে; global wallet/Session নয়, injectable ID generator থাকবে।
+
+<!-- BN-HELP:o-static-members:END -->
 
 **3. Purpose:** constants/caches with lifecycle care-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P4/P6; SeedData/lab; F-21 supporting।
 
@@ -2588,6 +2897,13 @@ public static int CreatedCount { get; private set; }
 
 **2. Definition:** static class instantiate/inherit করা যায় না; stateless methods type দিয়ে call।
 
+<!-- BN-HELP:o-static-class:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+Helper desk প্রতিবার new করে বানাতে হয় না। Static Class instantiate হয় না; Type ধরে Method ডাকে। TextTools.IsBlank null/Space হলে true। Static হলেই state-free নয়, helper সে রকম রাখবে। Project-এ Validation/formatting helper; hidden Session/config নয়।
+
+<!-- BN-HELP:o-static-class:END -->
+
 **3. Purpose:** utility/extension APIs-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P4; InputValidator/extensions।
 
 **4. Mental Model:** utility desk, per-user state নয়।
@@ -2630,6 +2946,13 @@ static class TextTools
 **1. Topic Name:** Readonly & Const।
 
 **2. Definition:** const compile-time value; readonly field declaration/constructor assign; readonly reference nested object mutable হতে পারে।
+
+<!-- BN-HELP:o-readonly-const:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+“সপ্তাহে ৭ দিন” const-এর মতো Compile-time স্থির। readonly reference বাক্স বদলানো সীমিত করে, ভেতরের জিনিস নয়। readonly List-এ Add হতে পারে। Project-এ Dependency readonly; Fee policy immutable Configuration, অকারণে const নয়।
+
+<!-- BN-HELP:o-readonly-const:END -->
 
 **3. Purpose:** dependency references/constants-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P4; config/service fields।
 
@@ -2674,6 +2997,13 @@ private readonly List<int> _values = new();
 **1. Topic Name:** Object Initializers।
 
 **2. Definition:** constructor runs then accessible fields/set/init members assigned; only public set নয়; init works।
+
+<!-- BN-HELP:o-object-initializer:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+খাতা তৈরির পরে অনুমতি থাকা ঘরে নাম লেখার মতো Object Initializer। Constructor-এর পরে accessible set/init চলে। new Label-এ Text বসে; private setter বাইরে নয়। Project-এ DTO/Test fixture-তে লাগবে; Account invariant bypass নয়।
+
+<!-- BN-HELP:o-object-initializer:END -->
 
 **3. Purpose:** settings/DTO/test fixtures-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P4; seed/config/test DTO।
 
@@ -2720,6 +3050,13 @@ class Label { public string Text { get; init; } = ""; }
 
 **2. Definition:** state+behavior boundary, valid transitions through controlled API; private set alone insufficient if methods allow invalid changes।
 
+<!-- BN-HELP:o-encapsulation:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+খেলনার ভেতরের চাকা না খুলে Button দিয়ে চালানো Encapsulation-এর মতো। State ও নিয়ম boundary-তে থাকে। Count private setter, Increment দিয়ে বদলায়; Method ভুল হলে setter একা বাঁচায় না। Project-এ valid Balance transition ও Store ownership দুটোই দরকার।
+
+<!-- BN-HELP:o-encapsulation:END -->
+
 **3. Purpose:** domain integrity-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2/P5; F-12/27; Account/store।
 
 **4. Mental Model:** vault নয়, controlled service window।
@@ -2764,6 +3101,13 @@ public void Increment() => Count++;
 
 **2. Definition:** derived type inherits eligible members; genuine is-a contract; base constructors not inherited।
 
+<!-- BN-HELP:o-inheritance:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+Circle একটি Shape, তাই সাধারণ contract প্রযোজ্য। Inheritance genuine is-a সম্পর্ক, শুধু একই Field নয়। Circle:Shape derive করে; Base Constructor চলে, Constructor inherit হয় না। Project-এ Account variation Lab; মূল app-এ Type/Policy সহজ হলে hierarchy নয়।
+
+<!-- BN-HELP:o-inheritance:END -->
+
 **3. Purpose:** framework families-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; AccountInheritanceLab।
 
 **4. Mental Model:** এক family-এর common contract, শুধু similar fields নয়।
@@ -2807,6 +3151,13 @@ class Circle : Shape { }
 
 **2. Definition:** same contract call selects compatible implementation; runtime dispatch via interface/virtual; overloading compile-time selection আলাদা।
 
+<!-- BN-HELP:o-polymorphism:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+সব কলমকে “লেখো” বললে নিজ নিজ কালি ব্যবহার করে। একই contract, implementation অনুযায়ী আচরণ। IEnumerable reference-এ List থাকে; interface/virtual dispatch actual implementation নেয়। Project-এ একই Service FakeClock/SystemClock নেবে; concrete Type branch নয়।
+
+<!-- BN-HELP:o-polymorphism:END -->
+
 **3. Purpose:** adapters/test doubles-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P6; clock/hasher/gateway/optional policy।
 
 **4. Mental Model:** এক button, device অনুযায়ী কাজ।
@@ -2848,6 +3199,13 @@ IEnumerable<int> values = new List<int> { 1, 2 };
 **1. Topic Name:** Method Overloading।
 
 **2. Definition:** same name different parameter signatures; return type alone not enough; compiler chooses based on call types।
+
+<!-- BN-HELP:o-method-overload:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+“মাপো” দিয়ে String বা Array-এর Length নেওয়ার মতো একই নামের Method ভিন্ন input নেয়। Size(string), Size(int[]) আলাদা signature; শুধু Return Type বদলালে Overload নয়। Project-এ helper variation, একই নামে সম্পূর্ণ ভিন্ন কাজ নয়।
+
+<!-- BN-HELP:o-method-overload:END -->
 
 **3. Purpose:** ergonomic libraries-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P4/P6; formatting/helper lab।
 
@@ -2893,6 +3251,13 @@ public int Size(int[] values) => values.Length;
 
 **2. Definition:** derived replaces virtual/abstract inherited implementation; runtime type dispatch।
 
+<!-- BN-HELP:o-method-override:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+সাধারণ “পরিচয় বলো” কাজ বিশেষ মেশিন নিজেরভাবে করে। Override inherited virtual/abstract কাজ বদলায়। Base reference-এও Derived override চলে; nonvirtual override নয়। Project-এ Lab-এ dispatch; Base contract ভাঙবে না, ToString secret দেখাবে না।
+
+<!-- BN-HELP:o-method-override:END -->
+
 **3. Purpose:** framework extensibility-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; AccountInheritanceLab।
 
 **4. Mental Model:** base promise, derived implementation।
@@ -2935,6 +3300,13 @@ public override string Describe() => "Circle";
 **1. Topic Name:** virtual, override, new।
 
 **2. Definition:** virtual permits override; override dispatch chain; new hides member, call depends on reference compile-time type for hidden member।
+
+<!-- BN-HELP:o-virtual-override-new:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+virtual পরিবর্তনের সুযোগ, override একই slot-এর implementation বদল, new একই নামের আলাদা member দিয়ে আড়াল। Override Base reference-এ Derived কাজ দেয়; Hiding-এ reference Type অনুযায়ী member নির্বাচন। Project-এ Lab; প্রয়োজন ছাড়া Main app-এ Hiding নয়।
+
+<!-- BN-HELP:o-virtual-override-new:END -->
 
 **3. Purpose:** legacy/API dispatch literacy-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; AccountInheritanceLab।
 
@@ -2981,6 +3353,13 @@ public new string Describe() => "Hidden";
 
 **2. Definition:** essential contract exposes needed behavior, hides irrelevant implementation; design principle, interface একমাত্র tool নয়।
 
+<!-- BN-HELP:o-abstraction:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+TV চালাতে Remote জানলেই চলে, circuit নয়। Abstraction দরকারি capability দেখায়, implementation detail লুকায়। Caller সময় পায়, কীভাবে আসে জানতেই হয় না। Project-এ Repository contract, private Dictionary নয়। সব Class-এর Interface বাধ্যতামূলক নয়।
+
+<!-- BN-HELP:o-abstraction:END -->
+
 **3. Purpose:** module boundaries-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P6; IClock/IStateStore।
 
 **4. Mental Model:** steering জানলেই drive, engine internals নয়।
@@ -3023,6 +3402,13 @@ Func<DateTimeOffset> now = () => DateTimeOffset.UtcNow;
 **1. Topic Name:** Interface।
 
 **2. Definition:** contract implementable by class/record/struct; modern interfaces default/static members থাকতে পারে, তাই কখনো implementation নেই বলা ভুল।
+
+<!-- BN-HELP:o-interface:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+কার্ডে “এই যন্ত্র লেখা দেবে” contract লেখা। Interface capability বলে, implementation কাজ করে। ITextSource.Read string দেয়। Modern Interface-এ default/static implementation-ও সম্ভব। Project-এ Clock/Repository/Hasher/Gateway seam; Fake semantic নিয়মও মানবে।
+
+<!-- BN-HELP:o-interface:END -->
 
 **3. Purpose:** DI/adapters-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3; repo/clock/hasher/gateway।
 
@@ -3067,6 +3453,13 @@ interface ITextSource { string Read(); }
 **1. Topic Name:** Abstract Class।
 
 **2. Definition:** direct instantiate নয়; can hold state/constructors/concrete/virtual/abstract members; abstract member optional, abstract type can have none।
+
+<!-- BN-HELP:o-abstract-class:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+অসম্পূর্ণ খেলনার নকশায় সাধারণ অংশ আছে, বিশেষ অংশ পরে পূরণ। Abstract Class সরাসরি instantiate নয়; concrete subclass পূরণ করে। Formatter.Format body নেই। Field/Constructor/concrete Method থাকতে পারে। Project-এ Template Method Lab, duplicate engine নয়।
+
+<!-- BN-HELP:o-abstract-class:END -->
 
 **3. Purpose:** genuine shared families-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; HandlerTemplateLab।
 
@@ -3113,6 +3506,13 @@ abstract class Formatter
 
 **2. Definition:** independent objects related/used; reference or ID can express relation; no lifecycle ownership implied।
 
+<!-- BN-HELP:o-association:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+দুই বন্ধু সম্পর্কিত কিন্তু স্বাধীন। Association সম্পর্ক/ব্যবহার, lifecycle ownership নিজে নয়। ID/reference দিয়ে সম্পর্ক হয়, association keyword নেই। Project-এ Transaction actor/source/destination ID ধরে; mutable bidirectional জাল নয়।
+
+<!-- BN-HELP:o-association:END -->
+
 **3. Purpose:** domain relationships-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2/P5; User/Account/Transaction IDs।
 
 **4. Mental Model:** দুই বন্ধু স্বাধীন, যোগাযোগ আছে।
@@ -3156,6 +3556,13 @@ string relatedItemId = "item-1";
 
 **2. Definition:** whole groups independent parts; parts can outlive group; ownership/lifecycle semantic, syntax আলাদা নয়।
 
+<!-- BN-HELP:o-aggregation:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+দল ভাঙলেও খেলোয়াড় থাকে। Aggregation স্বাধীন parts group করে। List থাকলেই Aggregation নয়, lifecycle বুঝতে হবে। Project-এ Report group সরালেও মূল Transaction History থাকে; group মূল Transaction-এর মালিক নয়।
+
+<!-- BN-HELP:o-aggregation:END -->
+
 **3. Purpose:** catalogs/reports/grouping-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; report groups existing transactions; lab।
 
 **4. Mental Model:** team ভাঙলেও player থাকে।
@@ -3197,6 +3604,13 @@ var catalog = new List<string> { "item-1", "item-2" };
 **1. Topic Name:** Composition।
 
 **2. Definition:** whole owns parts and their lifecycle; references alone/constructor DI alone যথেষ্ট নয়।
+
+<!-- BN-HELP:o-composition:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+খাতার নিজস্ব পৃষ্ঠা owned part। Composition whole-এর ownership/lifecycle বোঝায়। Document-এর Lines বাইরে share হলে বদলাতে পারে; defensive ownership দরকার। Project-এ postings owned immutable facts। শুধু DI আছে বলে FeeCalculator Composition নয়।
+
+<!-- BN-HELP:o-composition:END -->
 
 **3. Purpose:** owned value parts-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P5; User credential/Transaction postings।
 
@@ -3241,6 +3655,13 @@ record Document(IReadOnlyList<Line> Lines);
 
 **2. Definition:** sealed prevents subclassing; intent restriction, universal performance guarantee নয়।
 
+<!-- BN-HELP:o-sealed-class:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+“এ নকশা থেকে subclass নয়” sealed Class-এর মতো। ব্যবহার হয়, derive নয়। FixedLabel থেকে Child করলে Compiler বাধা দেয়; Interface implement করা যায়। Project-এ Lab; sealing-এর কারণ থাকবে, guaranteed performance দাবি নয়।
+
+<!-- BN-HELP:o-sealed-class:END -->
+
 **3. Purpose:** controlled APIs-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; lab/adapter choice।
 
 **4. Mental Model:** closed extension boundary।
@@ -3284,6 +3705,13 @@ sealed class FixedLabel { }
 **1. Topic Name:** Sealed Method।
 
 **2. Definition:** sealed override prevents further overriding inherited virtual method; not arbitrary normal method sealing।
+
+<!-- BN-HELP:o-sealed-method:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+মাঝের Class override করে বলে “পরেররা এই slot বদলাবে না।” sealed override সেই chain বন্ধ করে। সাধারণ Method-এ ইচ্ছেমতো sealed নয়। Project-এ Base/Middle/Leaf Lab; Main app-এ forced hierarchy নয়।
+
+<!-- BN-HELP:o-sealed-method:END -->
 
 **3. Purpose:** framework invariants-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; HandlerTemplateLab।
 
@@ -3330,6 +3758,13 @@ public sealed override string Describe() => "Fixed";
 
 **2. Definition:** same type split across source parts, compile merges; namespace/type identity must match।
 
+<!-- BN-HELP:o-partial-class:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+এক বইয়ের অধ্যায় আলাদা file, শেষে এক বই। Partial parts Compiler এক Type-এ মেলায়। একই identity-র LabView Title/Width একসঙ্গে পায়। Project-এ generated code ধারণা; Partial god class-এর দায়িত্ব ঠিক করে না।
+
+<!-- BN-HELP:o-partial-class:END -->
+
 **3. Purpose:** generated code/tooling-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; PartialConsoleLab।
 
 **4. Mental Model:** এক বইয়ের chapters আলাদা files, বই এক।
@@ -3375,6 +3810,13 @@ partial class LabView { public int Width => 40; }
 
 **2. Definition:** type inside type; scope/encapsulation tool, Builder বাধ্যতামূলক নয়।
 
+<!-- BN-HELP:o-nested-class:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+বড় বাক্সের ভেতরে helper-এর ছোট বাক্সের মতো Nested Type scope সীমিত করে। LabQuery-এর private State বাইরে নয়; Parent instance সব সময় লাগে না। Project-এ QueryBuilder Lab; সহজ query shape হলে forced Builder নয়।
+
+<!-- BN-HELP:o-nested-class:END -->
+
 **3. Purpose:** scoped helpers/builders-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P7; QueryBuilderLab।
 
 **4. Mental Model:** parent context-এর ছোট helper।
@@ -3416,6 +3858,13 @@ class LabQuery { private class State { } }
 **1. Topic Name:** ToString(), Equals(), GetHashCode()।
 
 **2. Definition:** representation/equality/hash contract; equal values must same hash, same hash not necessarily equal; object default class identity।
+
+<!-- BN-HELP:o-object-methods:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+নামের কার্ড, তুলনার নিয়ম, খোঁজার তাক আলাদা। ToString বর্ণনা, Equals সমান কি না, GetHashCode bucket। Equal হলে hash same, reverse নয়। Project-এ safe display/equality; hash স্থায়ী ID নয়, ToString-এ PIN নয়।
+
+<!-- BN-HELP:o-object-methods:END -->
 
 **3. Purpose:** collections/value objects-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; CopyEqualityLab/DateRange।
 
@@ -3462,6 +3911,13 @@ record Pair(int X, int Y);
 
 **2. Definition:** assignment copies variable value: value-type instance or reference to object; reference by-value parameter still reference copy।
 
+<!-- BN-HELP:o-ref-vs-value:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+ছবির কপি আলাদা কাগজ, একই link একই ছবিতে যায়। Value assignment value কপি; reference assignment reference কপি। Scalar b বদলালে a থাকে; shared List বদলালে দুজন দেখে। Project-এ safe snapshot; Reference by-value ও ref আলাদা।
+
+<!-- BN-HELP:o-ref-vs-value:END -->
+
 **3. Purpose:** API semantics-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P2/P6; Account/decimal/DateRange/lab।
 
 **4. Mental Model:** photo copy বনাম link copy।
@@ -3506,6 +3962,13 @@ var first = new List<int>(); var second = first; second.Add(1);
 **1. Topic Name:** Shallow Copy vs Deep Copy।
 
 **2. Definition:** reference assignment no object clone; shallow clone new outer object shares nested refs; deep copy chosen owned mutable graph copies।
+
+<!-- BN-HELP:o-copy:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+নতুন ব্যাগে একই ছোট বাক্স রাখলে outer আলাদা, inner shared: Shallow Copy। Owned mutable ভেতরের অংশও আলাদা হলে Deep Copy-এর উদ্দেশ্য পূরণ। ToList outer copy, nested share। Project-এ candidate live state share করলে precommit বদলে যেতে পারে।
+
+<!-- BN-HELP:o-copy:END -->
 
 **3. Purpose:** snapshots/staging-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P5/P6; AppState/CopyEqualityLab।
 
@@ -3552,6 +4015,13 @@ shallow[0].Add(2);
 **1. Topic Name:** Immutability।
 
 **2. Definition:** state cannot change after construction; private set permits class mutation, init shallow; record may mutable; nested ownership matters।
+
+<!-- BN-HELP:o-immutability:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+পুরোনো ঘটনার ছবি বদলায় না। Immutable state construction-এর পরে স্থির; নতুন তথ্যের নতুন মান। with-এ A থেকে B-এর copy, A থাকে। Nested List share হতে পারে। Project-এ Completed History/Receipt snapshot; record/init একা deep immutable নয়।
+
+<!-- BN-HELP:o-immutability:END -->
 
 **3. Purpose:** events/value data/cache safety-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P5/P7; credential/history/receipt।
 
@@ -3601,6 +4071,13 @@ var second = first with { Text = "B" };
 
 **2. Definition:** value assignment copies instance fields; reference fields inside struct still shared; reference assignment copies managed reference, not stable raw address।
 
+<!-- BN-HELP:r-value-reference-deep:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+কপি করা কার্ডেও একই ছবির link থাকলে ছবি shared। Struct-এর reference field-এও এমন হয়। ref caller Variable slot alias করে; by-value reference Object mutation share করে। Project-এ candidate-এর scalar/nested reference আলাদা Test।
+
+<!-- BN-HELP:r-value-reference-deep:END -->
+
 **3. Purpose:** API/copy correctness-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; RuntimeLab/CopyEqualityLab; F-42/27।
 
 **4. Mental Model:** photo copy with shared link inside photo; semantic copy not deep graph clone।
@@ -3647,6 +4124,13 @@ second.Add(2);
 
 **2. Definition:** call frames/local storage vs managed object storage; type semantics does not guarantee placement; JIT/registers/closures/async state affect storage।
 
+<!-- BN-HELP:r-stack-heap:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+টেবিল/গুদাম Stack/Heap বোঝার তুলনা, exact placement নিয়ম নয়। Holder-এর int Field containing Object-এ; Local register-এও হতে পারে। “সব Value Type Stack-এ” ভুল। Project-এ DateRange semantics দেখে নেবে, placement ধরে নয়।
+
+<!-- BN-HELP:r-stack-heap:END -->
+
 **3. Purpose:** runtime/performance literacy-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; RuntimeLab; DateRange design।
 
 **4. Mental Model:** desk/work frame vs warehouse; analogy implementation guarantee নয়।
@@ -3691,6 +4175,13 @@ class Holder { public int Number; }
 **1. Topic Name:** Boxing ও Unboxing।
 
 **2. Definition:** value→object/interface box copies value; unbox exact underlying value type; allocation costs subject to optimization।
+
+<!-- BN-HELP:r-boxing:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+ছোট মান সাধারণ প্যাকেটে রাখা Boxing। Value Object/interface-এ box হলে copy; Unboxing exact underlying Type বের করে। int boxed থেকে int নেওয়া যায়, সরাসরি long নয়। Project-এ generic typed API অনেক Boxing এড়ায়, সব নয়।
+
+<!-- BN-HELP:r-boxing:END -->
 
 **3. Purpose:** allocation-aware libraries-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; RuntimeLab; generic collection rationale।
 
@@ -3738,6 +4229,13 @@ int result = (int)boxed;
 
 **2. Definition:** implicit/explicit numeric/reference conversion; implicit can lose precision (long→double), so always no loss বলা ভুল।
 
+<!-- BN-HELP:r-type-conversion:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+লেখা “12” থেকে সংখ্যা ১২ অন্য রূপ। Conversion automatic/explicit হতে পারে, precision হারাতে পারে। (int)9.99 হয় 9, Round নয়। TryParse safe ফল। Project-এ Amount explicit Culture/NumberStyles; বড় long থেকে double-ও precision হারাতে পারে।
+
+<!-- BN-HELP:r-type-conversion:END -->
+
 **3. Purpose:** input/interoperability-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1/P6; InputReader/RuntimeLab।
 
 **4. Mental Model:** wide container doesn't mean exact representation।
@@ -3783,6 +4281,13 @@ bool ok = decimal.TryParse("123.45", out decimal amount);
 **1. Topic Name:** Pattern Matching।
 
 **2. Definition:** test type/constant/property/relational shape and bind variables; patterns no need forced inheritance।
+
+<!-- BN-HELP:r-pattern-matching:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+“গাড়ি এবং বড় হলে এই বাক্সে” shape দেখে সিদ্ধান্ত Pattern Matching। item is int number Type মিলে bind করে; >10 দেখে; উদাহরণে 42। Project-এ Status/Amount rule; forced inheritance নয়।
+
+<!-- BN-HELP:r-pattern-matching:END -->
 
 **3. Purpose:** validation/state branching-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P5/P7; validator/status/query।
 
@@ -3830,6 +4335,13 @@ if (item is int number && number > 10)
 
 **2. Definition:** static helper called instance-style; classic syntax first parameter this; doesn't modify original type or gain private access।
 
+<!-- BN-HELP:r-extension-methods:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+কলম না বদলে বাইরের helper instance-style-এ ডাকার মতো Extension। Static helper-এর প্রথম this receiver; null হতে পারে, private access নেই। Project-এ masking/formatting; বড় Auth/Fee rule লুকাবে না।
+
+<!-- BN-HELP:r-extension-methods:END -->
+
 **3. Purpose:** formatting/fluent helpers-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P4/P7; MoneyExtensions/StringExtensions।
 
 **4. Mental Model:** বাইরের helper, দেখতে built-in call।
@@ -3872,6 +4384,13 @@ static class TextTools
 **1. Topic Name:** Optional ও Named Parameters।
 
 **2. Definition:** optional default argument; named identifies parameter; compiler/call-site default versioning matters।
+
+<!-- BN-HELP:r-optional-named-params:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+রং না বললে default, নাম ধরে রং বললে named input। upper না দিলে false; upper:true-এ A। Default call-site-এ embedded হতে পারে। Project-এ readable helper/query; custom rate দিয়ে Fee bypass নয়।
+
+<!-- BN-HELP:r-optional-named-params:END -->
 
 **3. Purpose:** readable API calls-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; RuntimeLab/query/helper।
 
@@ -3917,6 +4436,13 @@ static string Describe(string text, bool upper = false)
 
 **2. Definition:** params variable arguments; ref caller initialized read/write alias; out callee assigns; in readonly reference, not deep immutable object।
 
+<!-- BN-HELP:r-params-ref-out-in:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+অনেক input, নিজের খাতা সরাসরি, খালি ঘরে ফল, শুধু পড়ার অনুমতি আলাদা। params বহু argument, ref initialized slot, out callee assign, in readonly reference। Project-এ TryParse/Lab; in deep immutable নয়, Balance ref খুলবে না।
+
+<!-- BN-HELP:r-params-ref-out-in:END -->
+
 **3. Purpose:** parsing/performance-aware APIs-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P1 out/P6 deeper; InputReader/RuntimeLab।
 
 **4. Mental Model:** many tickets / shared slot / output slot / read-only slot।
@@ -3960,6 +4486,13 @@ int.TryParse("12", out int parsed);
 **1. Topic Name:** IEnumerable&lt;T&gt; vs ICollection&lt;T&gt;।
 
 **2. Definition:** enumeration capability vs Count/Add/Remove/Contains/IsReadOnly; IEnumerable not inherently single-use/immutable; ICollection may read-only।
+
+<!-- BN-HELP:r-ienumerable-icollection:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+একটি তালিকা একে একে দেখা IEnumerable। Count/mutation member-সহ ICollection; read-only implementation reject করতে পারে। IEnumerable immutable বা single-use নিশ্চিত করে না। Project-এ owned snapshot/immutable element; শুধু Interface বদলে live data নিরাপদ নয়।
+
+<!-- BN-HELP:r-ienumerable-icollection:END -->
 
 **3. Purpose:** collection API design-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P3/P7; repository safe results।
 
@@ -4007,6 +4540,13 @@ int count = collection.Count;
 
 **2. Definition:** yield return produces next item, state machine resumes; yield break ends; body generally starts enumeration not call।
 
+<!-- BN-HELP:r-yield:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+চাইলে একটি করে খাবার দাও, থামার জায়গা মনে রাখো। yield return item দিয়ে pause, পরে resume। Two enumerate করলে 1 তারপর 2; call-এ সব body চলে না। Project-এ paging Lab; stored History memory নিজে কমে না।
+
+<!-- BN-HELP:r-yield:END -->
+
 **3. Purpose:** streaming/pipelines-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P7; history paging lab; FoundationLab।
 
 **4. Mental Model:** one dish per request, not full batch upfront।
@@ -4051,6 +4591,13 @@ static IEnumerable<int> Two()
 **1. Topic Name:** Deferred Execution।
 
 **2. Definition:** query description vs evaluation; Where/Select deferred, aggregates/materializers immediate; deferred may streaming or buffering।
+
+<!-- BN-HELP:r-deferred-execution:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+Recipe লেখা আর রান্না আলাদা। Query পরে evaluate হয়। Where-এর পরে 3 যোগ, ToList-এ ফল 2,3; আগে snapshot হলে নয়। OrderBy deferred হলেও buffer করে। Project-এ evaluation সময় বুঝবে; ToList Deep Copy নয়।
+
+<!-- BN-HELP:r-deferred-execution:END -->
 
 **3. Purpose:** query composition/reports-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P7/P8; query/ReportService।
 
@@ -4099,6 +4646,13 @@ var result = query.ToList();
 
 **2. Definition:** ReferenceEquals identity; Equals semantic equality; equal→same hash, hash collision allowed; comparer choice controls dictionary behavior।
 
+<!-- BN-HELP:r-equality-hashing:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+একই খাতা আর একই লেখার দুটি খাতা আলাদা প্রশ্ন। Hash সম্ভাব্য তাক, equality প্রমাণ নয়। HashSet দ্বিতীয় A নেয় না; collision সম্ভব। Project-এ comparer/Retry নিয়ম; mutable key বিপজ্জনক, hash secure fingerprint নয়।
+
+<!-- BN-HELP:r-equality-hashing:END -->
+
 **3. Purpose:** sets/caches/idempotency-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6/P9; CopyEqualityLab/retry।
 
 **4. Mental Model:** same person vs same form data vs index bucket।
@@ -4145,6 +4699,13 @@ bool second = ids.Add("A");
 
 **2. Definition:** deterministic cleanup by resource owner; using disposes on ordinary scope exit; GC doesn't call Dispose automatically।
 
+<!-- BN-HELP:r-idisposable:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+ধার করা যন্ত্র owner কাজ শেষে ফেরত দেয়। IDisposable cleanup contract, using সাধারণ scope exit-এ Dispose ডাকে। GC Dispose ডাকে না। Project-এ File/JSON lifetime; borrowed shared Logger প্রতি call-এ Dispose নয়।
+
+<!-- BN-HELP:r-idisposable:END -->
+
 **3. Purpose:** file/network resource lifetimes-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6 lab/P11 optional; FileAppLogger/JSON।
 
 **4. Mental Model:** borrowed tool ফেরত owner দেয়, arbitrary borrower নয়।
@@ -4190,6 +4751,13 @@ stream.WriteByte(1);
 
 **2. Definition:** managed memory reclaimed when unreachable from roots; cycles alone not leak, static/event references can retain; Gen0/1/2 concept।
 
+<!-- BN-HELP:r-gc:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+Roots থেকে unreachable managed Object-এর জায়গা GC ফেরত নিতে পারে; সঙ্গে সঙ্গে নয়। Static/Event reference ধরে রাখতে পারে; unreachable cycle একা leak নয়। Project-এ reachable History বাড়ে, GC মুছে দেবে না। Dispose resource cleanup আলাদা।
+
+<!-- BN-HELP:r-gc:END -->
+
 **3. Purpose:** memory/performance diagnostics-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6/P10; RuntimeLab/history memory।
 
 **4. Mental Model:** reachable map, not reference-count-only cleaner।
@@ -4234,6 +4802,13 @@ var temporary = new byte[128];
 **1. Topic Name:** is, as, typeof, nameof।
 
 **2. Definition:** is type/pattern; as compatible reference or nullable value conversion else null; typeof Type metadata; nameof compile-time symbol name।
+
+<!-- BN-HELP:r-is-as-typeof-nameof:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+কী Type, compatible কি, Type পরিচয়, Code-এর নাম: চার প্রশ্ন। is test/bind, as না মিললে null, typeof metadata, nameof symbol name। as int? সম্ভব, as int নয়। Project-এ Validation/error name; unnecessary concrete branching নয়।
+
+<!-- BN-HELP:r-is-as-typeof-nameof:END -->
 
 **3. Purpose:** validation/metadata/errors-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; RuntimeLab/validator।
 
@@ -4282,6 +4857,13 @@ string name = nameof(value);
 
 **2. Definition:** where expresses type capability compiler can rely on; class/struct/interface/base/new/notnull; constraints must valid combinations/order।
 
+<!-- BN-HELP:r-generics-constraints:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+মেশিন নানা যন্ত্র নেয়, কিন্তু capability শর্ত আছে। Constraint Compiler-কে শর্ত জানায়। where T:new() public parameterless Constructor চায়; না মিললে compile failure। Project-এ Generic Lab, forced IEntity নয়; Factory alternative ভাববে।
+
+<!-- BN-HELP:r-generics-constraints:END -->
+
 **3. Purpose:** type-safe reusable algorithms-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P6; GenericRepositoryLab।
 
 **4. Mental Model:** generic machine accepts only compatible tools।
@@ -4325,6 +4907,13 @@ static T Create<T>() where T : new() => new T();
 **1. Topic Name:** Exception Filters।
 
 **2. Definition:** catch when selects handler before unwinding; false filter leaves exception to another handler; predicate no side effects।
+
+<!-- BN-HELP:r-exception-filters:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+সাহায্যের দরজায় নির্দিষ্ট সমস্যার শর্ত। catch Type ও when মিললে handler, না হলে পরের পথ। Filter unwind-এর আগে evaluate; state mutation নয়। Project-এ selective recovery Lab, সব failure swallow নয়।
+
+<!-- BN-HELP:r-exception-filters:END -->
 
 **3. Purpose:** selective infrastructure recovery-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P5/P11; boundary/lab।
 
@@ -4372,6 +4961,13 @@ catch (InvalidOperationException) when (true)
 
 **2. Definition:** async Task failures stored in task and observed at await; non-async task-returning method may throw synchronously; async void different caller semantics।
 
+<!-- BN-HELP:r-async-exception:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+কাজের Ticket-এ failure থাকে, await করলে Caller দেখে। Faulted Task await-এ Exception; surrounding catch ধরে। Non-async Task-returning call synchronously throw-ও করতে পারে। Project-এ failure observe; postcommit notice fault transfer Failed নয়।
+
+<!-- BN-HELP:r-async-exception:END -->
+
 **3. Purpose:** async orchestration-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P9; fake gateway/AsyncLab; F-16।
 
 **4. Mental Model:** ticket carries failure, await opens result envelope।
@@ -4417,6 +5013,13 @@ catch (InvalidOperationException) { Console.WriteLine("Observed"); }
 **1. Topic Name:** CancellationToken।
 
 **2. Definition:** cooperative stop request; source requests, listener observes; not force-kill/rollback; source disposable।
+
+<!-- BN-HELP:r-cancellation-token:START -->
+**একদম সহজ বাংলায় বুঝি:**
+
+“থামাও” অনুরোধ, force-kill/rollback নয়। Source.Cancel signal, token-aware Delay দেখে cancellation দেয়; না দেখলে কাজ চলতে পারে। Source dispose দরকার। Project-এ precommit cancel-এ movement নয়, postcommit Completed থাকে; আলাদা Test।
+
+<!-- BN-HELP:r-cancellation-token:END -->
 
 **3. Purpose:** request/timeouts/I/O-এর কাজে এই capability ব্যবহার বা সচেতনভাবে এড়িয়ে সঠিক design বেছে নেওয়া। Project-এ লক্ষ্য: P9/P11; AsyncLab/fake gateway/JSON।
 
